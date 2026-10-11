@@ -1,0 +1,2436 @@
+<!DOCTYPE html>
+<html  lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="Build an ESP32 CAM AI Vision Assistant Pendant that describes surroundings aloud using Sarvam TTS. Free code, circuit diagram &amp; 3D files included." />
+<meta name="abstract" content="A DIY wearable AI vision assistant for visually impaired users built with ESP32 CAM, CircuitDigest Cloud image analysis, and Sarvam AI multilingual text-to-speech in Hindi, Tamil, Malayalam &amp; English." />
+<meta name="robots" content="index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+<link rel="canonical" href="https://circuitdigest.com/microcontroller-projects/esp32cam-ai-vision-assistant-pendant" />
+<meta name="author" content="Anand D" />
+<meta property="og:title" content="ESP32-CAM AI Vision Assistant Pendant for the Visually Impaired" />
+<meta property="og:image" content="https://circuitdigest.com/sites/default/files/projectimage_mic/diy%20eyes%20esp32.jpg" />
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "TechArticle",
+            "name": "ESP32-CAM AI Vision Assistant Pendant for the Visually Impaired",
+            "headline": "ESP32-CAM AI Vision Assistant Pendant: DIY Build Guide",
+            "description": "Build an ESP32 CAM AI Vision Assistant Pendant that describes surroundings aloud using Sarvam TTS. Free code, circuit diagram \u0026 3D files included.",
+            "image": {
+                "@type": "ImageObject",
+                "url": "/sites/default/files/projectimage_mic/diy%20eyes%20esp32.jpg",
+                "width": "750",
+                "height": "500"
+            },
+            "datePublished": "2026-08-20T21:44:12+0530",
+            "dateModified": "2026-08-22T19:55:59+0530",
+            "author": {
+                "@type": "Person",
+                "name": "Anand D",
+                "url": "https://circuitdigest.com/users/ananddhaneshan"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://circuitdigest.com",
+                "name": "CircuitDigest",
+                "url": "https://circuitdigest.com",
+                "sameAs": [
+                    "https://www.youtube.com/Circuitdigest",
+                    "https://www.linkedin.com/company/circuit-digest",
+                    "https://www.facebook.com/circuitdigest/",
+                    "https://www.instagram.com/circuit_digest"
+                ],
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://circuitdigest.com/sites/default/files/inline-images/logo_circuitdigest.png"
+                }
+            }
+        }
+    ]
+}</script>
+<link rel="icon" href="/sites/default/files/logocd_fevicon.png" type="image/png" />
+
+    <title>ESP32-CAM AI Vision Assistant Pendant: DIY Build Guide</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_Pijo96D596m9elyD3sMqalYcWuTM3H2TBw6k7c7GsxE.css?delta=0&amp;language=en&amp;theme=circuitdigest&amp;include=eJxljlEKwzAMQy8U4iOFOHXb0HguttPQ269sH2vZj0B6QshOc2LAbBRK1dKrT3Uhc9i1GodBOItyQhE317zDXxJ-bNbMNES3cFQaBh-NLFNvFBwT03IVXh18JaZ4Sx4Um5QtmZ-NIrZ-Pevmwuk7BA_3BizuTOM" />
+<link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_8AD2Y1d5i3ddnmh2ZkBkPRia9cNUrwKyna_w98kTr4c.css?delta=2&amp;language=en&amp;theme=circuitdigest&amp;include=eJxljlEKwzAMQy8U4iOFOHXb0HguttPQ269sH2vZj0B6QshOc2LAbBRK1dKrT3Uhc9i1GodBOItyQhE317zDXxJ-bNbMNES3cFQaBh-NLFNvFBwT03IVXh18JaZ4Sx4Um5QtmZ-NIrZ-Pevmwuk7BA_3BizuTOM" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.1.1/7.x-3.x/drupal-bootstrap.min.css" integrity="sha512-nrwoY8z0/iCnnY9J1g189dfuRMCdI5JBwgvzKvwXC4dZ+145UNBUs+VdeG/TUuYRqlQbMlL4l8U3yT7pVss9Rg==" crossorigin="anonymous" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.1.1/8.x-3.x/drupal-bootstrap.min.css" integrity="sha512-jM5OBHt8tKkl65deNLp2dhFMAwoqHBIbzSW0WiRRwJfHzGoxAFuCowGd9hYi1vU8ce5xpa5IGmZBJujm/7rVtw==" crossorigin="anonymous" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.2.0/7.x-3.x/drupal-bootstrap.min.css" integrity="sha512-U2uRfTiJxR2skZ8hIFUv5y6dOBd9s8xW+YtYScDkVzHEen0kU0G9mH8F2W27r6kWdHc0EKYGY3JTT3C4pEN+/g==" crossorigin="anonymous" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.2.0/8.x-3.x/drupal-bootstrap.min.css" integrity="sha512-JXQ3Lp7Oc2/VyHbK4DKvRSwk2MVBTb6tV5Zv/3d7UIJKlNEGT1yws9vwOVUkpsTY0o8zcbCLPpCBG2NrZMBJyQ==" crossorigin="anonymous" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.3.1/7.x-3.x/drupal-bootstrap.min.css" integrity="sha512-ZbcpXUXjMO/AFuX8V7yWatyCWP4A4HMfXirwInFWwcxibyAu7jHhwgEA1jO4Xt/UACKU29cG5MxhF/i8SpfiWA==" crossorigin="anonymous" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.3.1/8.x-3.x/drupal-bootstrap.min.css" integrity="sha512-kTMXGtKrWAdF2+qSCfCTa16wLEVDAAopNlklx4qPXPMamBQOFGHXz0HDwz1bGhstsi17f2SYVNaYVRHWYeg3RQ==" crossorigin="anonymous" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.4.0/8.x-3.x/drupal-bootstrap.min.css" integrity="sha512-tGFFYdzcicBwsd5EPO92iUIytu9UkQR3tLMbORL9sfi/WswiHkA1O3ri9yHW+5dXk18Rd+pluMeDBrPKSwNCvw==" crossorigin="anonymous" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_gTFKtwVmYfjp51w2AIGc8G5ZhVkYx5HM7pRAI_s3LrI.css?delta=11&amp;language=en&amp;theme=circuitdigest&amp;include=eJxljlEKwzAMQy8U4iOFOHXb0HguttPQ269sH2vZj0B6QshOc2LAbBRK1dKrT3Uhc9i1GodBOItyQhE317zDXxJ-bNbMNES3cFQaBh-NLFNvFBwT03IVXh18JaZ4Sx4Um5QtmZ-NIrZ-Pevmwuk7BA_3BizuTOM" />
+
+    
+
+                  <style type="text/css">
+        @media (min-width: 768px){
+        .col-sm-9 { width: 58%; margin-left: 7.25%; }
+        .col-sm-3 { width: 27.5%; }
+        .view-category-wise-views .views-view-grid .views-col, .view-articles-listing .views-view-grid .views-col, .view-electronic-circuit-listing .views-view-grid .views-col {min-width: 258px;}
+        }
+      </style>
+                        <div id='div-gpt-ad-1625818497950-0' style='min-width: 120px; min-height: 600px; position: fixed;  /*right: 55.5%;*/ margin: 0 540px 0 0; z-index: 99'>
+ <script type="0226ff5781d26680fcbd8d9c-text/javascript">
+   googletag.cmd.push(function() { googletag.display('div-gpt-ad-1625818497950-0'); });
+ </script>
+</div>
+ <div id='div-gpt-ad-1625818544655-0' style='min-width: 120px; min-height: 600px;position: fixed;   margin: 0 0 0 540px; /*left: 55.5%;*/ right: 0.2%; z-index: 99'>
+ <script type="0226ff5781d26680fcbd8d9c-text/javascript">
+   googletag.cmd.push(function() { googletag.display('div-gpt-ad-1625818544655-0'); });
+ </script> 
+</div>
+                         
+<!-- Taboola Pixel Code -->
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+  window._tfa = window._tfa || [];
+  window._tfa.push({notify: 'event', name: 'page_view', id: 1884049});
+  !function (t, f, a, x) {
+         if (!document.getElementById(x)) {
+            t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+         }
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/unip/1884049/tfa.js',
+  'tb_tfa_script');
+</script>
+<!-- End of Taboola Pixel Code -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62912293-1" type="0226ff5781d26680fcbd8d9c-text/javascript"></script>
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62912293-1');
+</script>
+
+
+
+
+
+ <!--Google DFP code-->
+<script src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" type="0226ff5781d26680fcbd8d9c-text/javascript"></script>
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+window.googletag = window.googletag || {cmd: []};
+</script>
+
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+  googletag.cmd.push(function() {
+  var mapping_leaderboard = googletag.sizeMapping().
+  addSize([992, 0], [728, 90]). //desktop
+  addSize([768, 0], [728, 90]). //tablet
+  addSize([320, 0], [[336, 42],[300, 50]]). //mobile
+  //addSize([0, 0], [[728, 90], [1, 1]]). //other
+  build();
+
+ //   googletag.defineSlot('/21034905/boombox2', [300, 250], 'div-gpt-ad-1533626231783-1').addService(googletag.pubads());
+ //   googletag.defineSlot('/21034905/skyscraper_ad', [160, 600], 'div-gpt-ad-1490853271798-1').addService(googletag.pubads());
+  //  googletag.defineSlot('/21034905/welcome_ad', [640, 480], 'div-gpt-ad-1490853271798-2').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/welcome_ad', [640, 480], 'div-gpt-ad-1569943024333-0').addService(googletag.pubads());
+//  googletag.defineSlot('/21034905/welcome-banner-mobile', [300, 225], 'div-gpt-ad-1611903778314-0').addService(googletag.pubads());
+//  googletag.defineSlot('/21034905/boombox_bottom', [300, 250], 'div-gpt-ad-1533626231783-0').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/boombox_bottom', [300, 250], 'div-gpt-ad-1632828458996-0').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/leaderboard', [728, 90], 'div-gpt-ad-1491291145553-2').defineSizeMapping(mapping_leaderboard).addService(googletag.pubads());
+  // frontrightbar  googletag.defineSlot('/21034905/content_top', [650, 90], 'div-gpt-ad-1519570476979-1').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/Skyscraper_ad2', [160, 600], 'div-gpt-ad-1508834807558-0').addService(googletag.pubads());
+    googletag.defineSlot('/21034905/Welcome_Ad2', [640, 480], 'div-gpt-ad-1508834807558-1').addService(googletag.pubads());
+//  googletag.defineSlot('/21034905/Leaderboard_Homepage_600x90', [600, 90], 'div-gpt-ad-1519570476979-0').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/Billboard', [970, 250], 'div-gpt-ad-1522423126716-0').addService(googletag.pubads());
+  //googletag.defineSlot('/21034905/components101_billboard', [970, 250], 'div-gpt-ad-1577888984385-0').addService(googletag.pubads());
+   googletag.defineSlot('/21034905/cd_digikey_billboard_bottom', [970, 250], 'div-gpt-ad-1626868066018-0').addService(googletag.pubads()); //footer bill board
+  googletag.defineSlot('/21034905/Welcome_Ad3', [640, 480], 'div-gpt-ad-1632744355244-0').addService(googletag.pubads());
+//    googletag.defineSlot('/21034905/Welcome_Ad4', [640, 480], 'div-gpt-ad-1530018046511-1').addService(googletag.pubads());
+  //googletag.defineSlot('/21805061584/CA_CircuitDigest', [300, 250], 'div-gpt-ad-1561528735888-0').addService(googletag.pubads()); <!-- cyber media intel campaign -->
+  //googletag.defineSlot('/21034905/cd-leaderboard-in-content', [728, 90], 'div-gpt-ad-1572526743616-0').addService(googletag.pubads()); <!-- analog devices ad -->
+  googletag.defineSlot('/21034905/Leaderboard_2', [728, 90], 'div-gpt-ad-1575031687404-0').addService(googletag.pubads()); <!-- analog devices ad 2-->
+    googletag.defineSlot('/21034905/track_imp_1x1', [1, 1], 'div-gpt-ad-1572871798331-0').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/adi_track_pixel', [1, 1], 'div-gpt-ad-1573540406783-0').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/CD_Track_3', [1, 1], 'div-gpt-ad-1575031611223-0').addService(googletag.pubads());
+//  googletag.defineSlot('/21034905/boombox2', [300, 250], 'div-gpt-ad-1580621619978-0').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/boombox2', [300, 250], 'div-gpt-ad-1626353864327-0').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/cd_half_page_ad', [300, 600], 'div-gpt-ad-1593583401069-0').addService(googletag.pubads()); //mouser RHS floating ad
+//  googletag.defineSlot('/21034905/cd_digikey_billboard_bottom', [970, 250], 'div-gpt-ad-1598511690090-0').addService(googletag.pubads());  //cd_digikey_billboard_bottom
+  googletag.defineSlot('/21034905/cd_billboard_banner_mobile', [300, 200], 'div-gpt-ad-1619520102481-0').addService(googletag.pubads());
+  googletag.defineSlot('/21034905/cd_small_leaderboard_banner_mobile', [300, 90], 'div-gpt-ad-1619520139575-0').addService(googletag.pubads());
+
+  //googletag.defineSlot('/21034905/C101_partstack_trackingpixel', [1, 1], 'div-gpt-ad-1704784866813-0').addService(googletag.pubads());
+     googletag.defineSlot('/21034905/c101_wallpaper_banner_left', [120, 600], 'div-gpt-ad-1625818497950-0').addService(googletag.pubads());
+   googletag.defineSlot('/21034905/c101_wallpaper_banner_right', [120, 600], 'div-gpt-ad-1625818544655-0').addService(googletag.pubads());
+   googletag.defineSlot('/21034905/c101_wallpaper_banner_left_2', [120, 600], 'div-gpt-ad-1640869785778-0').addService(googletag.pubads());
+   googletag.defineSlot('/21034905/c101_wallpaper_banner_right_2', [120, 600], 'div-gpt-ad-1640869848371-0').addService(googletag.pubads());
+   
+     googletag.defineSlot('/21034905/CD_Half_Page_Banner2', [300, 600], 'div-gpt-ad-1719307821746-0').addService(googletag.pubads());
+     googletag.defineSlot('/21034905/billboard_3', [970, 250], 'div-gpt-ad-1721987993455-0').addService(googletag.pubads());
+    googletag.defineSlot('/21034905/half-page-banner-2', [300, 600], 'div-gpt-ad-1735975955798-0').addService(googletag.pubads());
+    googletag.defineSlot('/21034905/C101_partstack_trackingpixel', [1, 1], 'div-gpt-ad-1704784866813-0').addService(googletag.pubads()); //pcbshop tracking pixel c101
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.enableServices();
+  });
+</script>
+
+
+
+<script type="0226ff5781d26680fcbd8d9c-text/javascript"> window._peq = window._peq || []; window._peq.push(["init"]); </script>
+<script src="https://clientcdn.pushengage.com/core/dbb130feab257219df5ec315dceda764.js" async type="0226ff5781d26680fcbd8d9c-text/javascript"></script>
+
+<style>
+@media only screen and (max-width:1360px){
+   #div-gpt-ad-1625818497950-0, #div-gpt-ad-1625818544655-0{display:none;}
+   #div-gpt-ad-1640869785778-0, #div-gpt-ad-1640869848371-0{display:none;}
+}
+</style>
+  <style>.userprofile_bg .profile > .btn-block { display: none; }</style>
+
+
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "description": "Circuit Digest is a one-stop place for Tech enthusiasts to get the latest news in the semiconductor industry, Articles, Tutorials, and DIY projects to inspire electronics engineers with the latest technology and trends.",
+    "name": "CircuitDigest",
+    "url": "https://circuitdigest.com/",
+    "image": "https://circuitdigest.com/themes/circuitdigest/images/semicon_logo1.png",
+    "logo": "https://circuitdigest.com/sites/default/files/circuitdigest_logo_0.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "665, Siddharth Nagar-A, Malviya Nagar",
+      "addressLocality": "Jaipur",
+      "addressRegion": "Rajasthan",
+      "postalCode": "302017"
+    },
+    "sameAs": [
+      "https://twitter.com/circuitdigest",
+      "https://www.facebook.com/circuitdigest",
+      "https://www.linkedin.com/company/circuit-digest",
+      "https://www.instagram.com/circuit_digest/",
+      "https://www.youtube.com/Circuitdigest",
+      "https://www.crunchbase.com/organization/circuit-digest"
+    ]
+  }
+  </script>
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    "name": "CircuitDigest",
+    "url": "https://circuitdigest.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://circuitdigest.com/search/node?keys={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+
+
+  </head>
+  <body class="path-node page-node-type-microcontroller has-glyphicons">
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+    <!-- removed below two scripts becuase its by default included in D9 if any issue in popup please uncomment them -->
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+	
+<div id="myModalwel" class="modal fade" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="display:none">
+              <div class="blocksss">
+                <h5 class="modal-title">Continue to site >>></h5>
+              </div>
+            </div>
+            <div class="modal-body">
+    <!-- /21034905/components101_welcome_banner -->
+     <div id='div-gpt-ad-1569943024333-0' style='min-width: 640px; min-height: 480px;'>
+      <script type="0226ff5781d26680fcbd8d9c-text/javascript">
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1569943024333-0'); });
+      </script>
+    </div> 
+                 <!-- <img src="adsimage.png" class="img-responsive"> -->
+            </div>
+        </div>
+      </div>
+    </div>
+	</div>
+	
+
+
+
+<style type="text/css">
+
+
+</style>
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+              <header class="navbar navbar-default container-fluid" id="navbar" role="banner">
+      <div class="row header-top">
+        <div class="col-md-6 col-sm-6">
+            <div class="region region-top-left">
+    <section id="block-topleftlinks" class="block block-block-content block-block-content5df5a8f3-486f-47d3-a699-1261b4c9d6e9 clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p><a href="/about-us">About</a> | <a href="/contact">Contact</a>| <a href="/advertise">Advertise</a></p>
+</div>
+      
+  </section>
+
+
+  </div>
+
+        </div>
+        <div class="col-md-6 col-sm-6">
+              <div class="region region-top-right">
+    <section id="block-toprightsociallinks" class="block block-block-content block-block-content19b8af88-b522-4b9c-add9-edefad2787eb clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><div class="header-social-icons"><a href="https://www.facebook.com/circuitdigest/" target="_blank"><img src="/themes/circuitdigest/images/fb_icon.png" data-entity-uuid data-entity-type alt="facebook icon" width="32" height="32" loading="lazy"></a> <a href="https://twitter.com/CircuitDigest" target="_blank"><img src="/themes/circuitdigest/images/twitter_icon.png" data-entity-uuid data-entity-type alt="twitter icon" width="32" height="32" loading="lazy"></a> <a href="https://www.youtube.com/channel/UCy3CUAIYgZdAOG9k3IPdLmw" target="_blank"><img src="/themes/circuitdigest/images/youtube_icon.png" data-entity-uuid data-entity-type alt="youtube icon" width="32" height="32" loading="lazy"></a> <a href="https://www.instagram.com/circuit_digest/" target="_blank"><img src="/themes/circuitdigest/images/insta_icon.png" data-entity-uuid data-entity-type alt="instagram icon" width="32" height="32" loading="lazy"></a></div>
+</div>
+      
+  </section>
+
+
+  </div>
+
+        </div>
+      </div>
+
+      <div class="row header-top_2">
+          <div class="col-md-4 col-sm-4 logo">  <div class="region region-navigation">
+          <a class="logo navbar-btn pull-left" href="/" title="Home" rel="home">
+      <img src="/sites/default/files/circuitdigest_logo_0.png" alt="Home" />
+    </a>
+      
+  </div>
+</div>
+          <div class="col-md-8 col-sm-8">
+            <div class="header-social-icons">
+              <div class="mb-0 pl-0">
+                  <div class="region region-user-menu">
+    <nav role="navigation" aria-labelledby="block-circuitdigest-account-menu-menu" id="block-circuitdigest-account-menu">
+            
+  <h2 class="visually-hidden" id="block-circuitdigest-account-menu-menu">User account menu</h2>
+  
+
+        
+      <ul class="menu menu--account nav navbar-nav navbar-right">
+                      <li class="first last">
+                                        <a href="/user/login" data-drupal-link-system-path="user/login">Log in</a>
+              </li>
+        </ul>
+  
+
+  </nav>
+<div class="search-block-form block block-search block-search-form-block" data-drupal-selector="search-block-form" id="block-circuitdigest-search" role="search">
+  
+    
+      <form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+  <div class="form-item js-form-item form-type-search js-form-type-search form-item-keys js-form-item-keys form-no-label form-group">
+      <label for="edit-keys" class="control-label sr-only">Search</label>
+  
+  
+  <div class="input-group"><input title="Enter the terms you wish to search for." data-drupal-selector="edit-keys" class="form-search form-control" placeholder="Search" type="search" id="edit-keys" name="keys" value="" size="15" maxlength="128" data-toggle="tooltip" /><span class="input-group-btn"><button type="submit" value="Search" class="button js-form-submit form-submit btn-primary btn icon-only"><span class="sr-only">Search</span><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></button></span></div>
+
+  
+  
+  </div>
+<div class="form-actions form-group js-form-wrapper form-wrapper" data-drupal-selector="edit-actions" id="edit-actions"></div>
+
+</form>
+
+  </div>
+
+  </div>
+
+                              </div>
+            </div>
+          </div>
+        </div>
+                <nav class="navbar navbar-inverse row">
+
+          
+              <div class="region region-navigation-collapsible">
+    <section id="block-tb-megamenu-menu-block-main" class="block block-tb-megamenu block-tb-megamenu-menu-blockmain clearfix">
+  
+    
+
+      <style type="text/css">
+  .tb-megamenu.animate .mega > .mega-dropdown-menu, .tb-megamenu.animate.slide .mega > .mega-dropdown-menu > div {
+    transition-delay: 200ms;  -webkit-transition-delay: 200ms;  -ms-transition-delay: 200ms;  -o-transition-delay: 200ms;  transition-duration: 400ms;  -webkit-transition-duration: 400ms;  -ms-transition-duration: 400ms;  -o-transition-duration: 400ms;
+  }
+</style>
+<div  class="tb-megamenu tb-megamenu-main style-blue animate fading" data-duration="400" data-delay="200" id="tb-megamenu-main" role="navigation" aria-label="Main navigation">
+      <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar tb-megamenu-button" type="button">
+      <i class="fa fa-reorder"></i>
+    </button>
+    <div class="nav-collapse ">
+    <ul  class="tb-megamenu-nav nav level-0 items-7" role="list" >
+        <li  class="tb-megamenu-item level-1 mega dropdown" data-id="menu_link_content:027becfb-f7cb-4951-b96f-bfde4a303e27" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="1" >
+      <a href="/news"  class="dropdown-toggle" aria-expanded="false">
+          News
+          <span class="caret"></span>
+          </a>
+  <div  class="tb-megamenu-submenu dropdown-menu mega-dropdown-menu nav-child" data-class="" data-width="" role="list">
+  <div class="mega-dropdown-inner">
+          <div  class="tb-megamenu-row row-fluid">
+      <div  class="tb-megamenu-column span12 mega-col-nav" data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-1">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-3" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:23580731-f357-47aa-9d9d-1c0a5e0b637e" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/new-electronics-components" >
+          New Products
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:24d173ef-4560-47d1-8359-e04f143c0fd0" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/industry-news" >
+          Industry News
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:152f5092-ecf7-4a9b-9181-3e052220419c" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/community-news" >
+          Community News
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+  </div>
+
+      </div>
+</div>
+
+</li>
+
+        <li  class="tb-megamenu-item level-1 mega dropdown" data-id="menu_link_content:5ddd429d-d1db-433d-a744-8f2dbf4645ec" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="1" >
+      <a href="/articles"  class="dropdown-toggle" aria-expanded="false">
+          Articles
+          <span class="caret"></span>
+          </a>
+  <div  class="tb-megamenu-submenu dropdown-menu mega-dropdown-menu nav-child" data-class="" data-width="" role="list">
+  <div class="mega-dropdown-inner">
+          <div  class="tb-megamenu-row row-fluid">
+      <div  class="tb-megamenu-column span12 mega-col-nav" data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-2">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-5" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:a538fac2-bb0a-445b-8022-22326bc2897f" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/product-reviews" >
+          Product Reviews
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:30426154-166f-449e-b51b-240fabb24794" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/tech-articles" >
+          Tech Articles
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:ba549c41-af96-4237-968d-9258917d719e" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/tutorials" >
+          Tutorials
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:e9c34d67-d262-4ae3-b266-4e7e83f96bdd" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/interviews" >
+          Interviews
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:245303db-06c4-4dcd-90eb-7dbf000f4c35" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/case-studies" >
+          Case Studies
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+  </div>
+
+      </div>
+</div>
+
+</li>
+
+            <li  class="tb-megamenu-item level-1 mega digikeycss mega-align-center dropdown" data-id="menu_link_content:a83e8e17-9c22-45c4-9ff7-e04526094a7a" data-level="1" data-type="menu_item" data-class="digikeycss" data-xicon="" data-caption="" data-alignsub="center" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="1" >
+      <span class="dropdown-toggle tb-megamenu-no-link" aria-expanded="false" tabindex="0">
+          DigiKey Store
+          <span class="caret"></span>
+          </span>
+  <div  class="tb-megamenu-submenu digikeycss1 dropdown-menu mega-dropdown-menu nav-child" data-class="digikeycss1" data-width="700" style="width: 700px;" role="list">
+  <div class="mega-dropdown-inner">
+          <div  class="tb-megamenu-row row-fluid">
+      <div  class="tb-megamenu-column span3 mega-col-nav" data-class="" data-width="3" data-hidewcol="0" id="tb-megamenu-column-3">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-4" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:1619dbfa-b318-4c9f-9f4c-734709b4807a" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3y7lgM0"  target="_blank" rel="nofollow">
+          Cables and Wires
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:8ceaf5b5-906e-4428-a50a-08cdeb9bcce9" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3yaBR1m"  target="_blank" rel="nofollow">
+          LED/Optoelectronics
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:fe00807b-fd09-4490-bc7a-43889e033b87" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/39sXq2V"  target="_blank" rel="nofollow">
+          Connectors and Interconnect
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:f5eb64d3-8599-461b-ad01-71e66d116396" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3s4uqFh"  target="_blank" rel="nofollow">
+          Discrete
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+      <div  class="tb-megamenu-column span3 mega-col-nav" data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-4">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-4" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:ef3822c9-d5c4-4e03-b4d6-86bb836db314" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3saepNU"  target="_blank" rel="nofollow">
+          Electromechanical
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:901e0859-9780-4897-b617-53b5253b0129" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3MJrS7m"  target="_blank" rel="nofollow">
+          Integrated Circuits (ICs)
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:44db3125-9f49-4373-b5c8-b978c24b78b7" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3w362oI"  target="_blank" rel="nofollow">
+          Embedded Computers
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:92a98bdf-afdc-4af8-a2d5-03187bd59b64" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3yby6ZN"  target="_blank" rel="nofollow">
+          Enclosures, Hardware and Office
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+      <div  class="tb-megamenu-column span3 mega-col-nav" data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-5">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-5" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:e5941132-7863-4028-a3d1-47f62e8eb848" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/38LXQB0"  target="_blank" rel="nofollow">
+          Isolators
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:1ff6f476-9d98-4fc2-8aa7-5cc40d8067eb" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3MOHgzq"  target="_blank" rel="nofollow">
+          RF and Wireless
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:5cb1e4fb-35a2-4209-8109-287304ce7a3b" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3yiw6yC"  target="_blank" rel="nofollow">
+          Power and Circuit Protection
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:e03b0421-e01f-4377-b562-4aac3e178397" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3OSDkiW"  target="_blank" rel="nofollow">
+          Programmers
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:c0271f9f-e1ba-499e-8e08-05e63cb80da6" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3ORkMQ7"  target="_blank" rel="nofollow">
+          Passives
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+      <div  class="tb-megamenu-column span3 mega-col-nav" data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-6">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-4" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:7e5e5d5c-1d76-46e6-8eef-2a56d5bdd709" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3LJCcvS"  target="_blank" rel="nofollow">
+          Sensors and Transducers
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:8ab47d07-6d9a-4ec0-acb3-1ab44ad102ef" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3LFRoKJ"  target="_blank" rel="nofollow">
+          Semiconductors 
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:32a51290-a356-4942-8196-0c2b211939bc" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3vFY85q"  target="_blank" rel="nofollow">
+          Test Products
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:68d4a7b5-da4c-4637-822b-92fdfeb10707" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://bit.ly/3P5ohTc"  target="_blank" rel="nofollow">
+          Tools
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+  </div>
+
+      </div>
+</div>
+
+</li>
+
+        <li  class="tb-megamenu-item level-1 mega mega-align-center dropdown" data-id="menu_link_content:3ac9a787-9c81-4d3d-b457-75034b321034" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="center" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="1" >
+      <a href="/electronics-projects"  class="dropdown-toggle" aria-expanded="false">
+          Projects
+          <span class="caret"></span>
+          </a>
+  <div  class="tb-megamenu-submenu dropdown-menu mega-dropdown-menu nav-child" data-class="" data-width="700" style="width: 700px;" role="list">
+  <div class="mega-dropdown-inner">
+          <div  class="tb-megamenu-row row-fluid">
+      <div  class="tb-megamenu-column span3 mega-col-nav" data-class="" data-width="3" data-hidewcol="0" id="tb-megamenu-column-7">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-6" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:a2dd4a1d-d8ab-4a86-b7b5-5a7935502474" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/555-timer-circuits" >
+          555 Timer Circuits
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:4467f8b0-dd29-42b7-b1c6-17e043ea8167" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/op-amp-circuits" >
+          Op-amp Circuits
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:3591ac1d-fb93-48cb-8e8e-35fbe4f5886a" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/audio-circuits" >
+          Audio Circuits
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:f2c06383-4e76-4bf6-a376-26a5289273d3" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/smps-power-supply-circuits" >
+          Power Supply Circuits
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:a212b2e2-5322-4cdf-b7cc-0d5510058d75" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/arduino-projects" >
+          Arduino Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:0045eb25-4fa2-4bd5-a4c1-af8221fa2712" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/simple-raspberry-pi-projects-for-beginners" >
+          Raspberry Pi Projects
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+      <div  class="tb-megamenu-column span3 mega-col-nav" data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-8">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-5" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:ad759a2c-9568-4a08-a694-d89289f134d7" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/raspberry-pi-pico-projects-and-tutorials" >
+          Raspberry Pi Pico Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:81c2ec7a-d116-49d3-9cc1-42cade802214" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/raspberry-pi-zero-projects-and-tutorials" >
+          Raspberry Pi Zero Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:1e49907b-5fd2-4afe-a73b-5274329812a6" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/stm32-projects-and-tutorials" >
+          STM32 Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:8176b280-1ba1-413f-ac44-a423af628bed" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/drone-projects" >
+          Drone Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:df2889dc-bb78-40a9-9726-bee55df0d706" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/esp8266-projects" >
+          ESP8266 Projects
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+      <div  class="tb-megamenu-column span3 mega-col-nav" data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-9">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-9" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:df2889dc-bb78-40a9-9726-bee55df0d706" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/esp8266-projects" >
+          ESP8266 Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:357bec41-9953-4c2e-a2a4-fa6c30a97103" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/esp32-projects" >
+          ESP32 Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:0cfccf2b-553c-4ad7-868d-049289bf7bd8" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/pic-microcontroller-projects" >
+          PIC Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:0bed1213-9b28-4f93-8a7a-0db34a6dcf1b" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/nodemcu-esp8266-projects" >
+          NodeMCU Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:36381f3f-125c-4495-8c72-c7d3de66bd5b" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/home-automation-projects" >
+          Home Automation Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:8472eff1-bd34-47ea-a1be-c22a2ce51bab" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="https://circuitdigest.com/internet-of-things-iot-projects" >
+          IoT Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:c998d13f-368b-40d6-9c03-70af28ba372b" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/robotics-projects" >
+          Robotics Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:3064ca41-0c72-430d-b868-bcd00fb572d8" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/ai-projects-and-tutorials" >
+          AI Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:e74c957b-9327-428b-a343-ac21070ab208" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/electric-vehicles-ev-projects" >
+          EV Projects
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+      <div  class="tb-megamenu-column span3 mega-col-nav" data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-10">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-5" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:4356ce7f-11c1-4c05-9662-f8c2fed68e3b" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/diy-pcb-projects" >
+          PCB Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:5293cf51-1525-4b00-837e-b04be55cd60a" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/vlsi-projects" >
+          VLSI Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:da44be07-d0c4-498f-a86e-bba06ac3c7a1" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/electronic-circuits" >
+          All Electronic Circuits
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:3a820c33-43dd-4f1f-be18-cf33822ce156" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/microcontroller-projects" >
+          All Microcontroller Projects
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:8673c559-fd3a-4bcd-958c-36f1aea3f5ae" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/electronics-projects" >
+          All Electronics Projects
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+  </div>
+
+      </div>
+</div>
+
+</li>
+
+        <li  class="tb-megamenu-item level-1 mega dropdown" data-id="menu_link_content:b68a244f-1cf5-478d-ac65-b434f550c340" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="1" >
+      <a href="/contest/smart-home-and-wearables-project-contest-2025/"  class="dropdown-toggle" aria-expanded="false">
+          Contests
+          <span class="caret"></span>
+          </a>
+  <div  class="tb-megamenu-submenu dropdown-menu mega-dropdown-menu nav-child" data-class="" data-width="" role="list">
+  <div class="mega-dropdown-inner">
+          <div  class="tb-megamenu-row row-fluid">
+      <div  class="tb-megamenu-column span12 mega-col-nav" data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-11">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-4" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:39556bd5-af34-4fde-8b9b-6e6c4458838f" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/contest/smart-home-and-wearables-project-contest-2025/" >
+          Smart Home &amp; Wearables Contest 2025
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:03d7f700-0aeb-47f4-9a9c-122f66a43c11" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/contest/iot-edge-ai-project-challenge-2024" >
+          IoT &amp; Edge AI Project Challenge 2024
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:b67f13ea-fd1a-40d2-82d4-37d0fef28fec" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/contest/world-energy-challenge-2023" >
+          World Energy Challenge 2023
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:87316f15-e362-4527-809e-3dc4a98360dc" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/contest/india-automation-challenge-2021/" >
+          India Automation Challenge 2021
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+  </div>
+
+      </div>
+</div>
+
+</li>
+
+        <li  class="tb-megamenu-item level-1 mega dropdown" data-id="menu_link_content:ed19b02f-675f-47c7-8a60-e6190f4a8738" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="1" >
+      <a href="/contact"  class="dropdown-toggle" aria-expanded="false">
+          Contact
+          <span class="caret"></span>
+          </a>
+  <div  class="tb-megamenu-submenu dropdown-menu mega-dropdown-menu nav-child" data-class="" data-width="" role="list">
+  <div class="mega-dropdown-inner">
+          <div  class="tb-megamenu-row row-fluid">
+      <div  class="tb-megamenu-column span12 mega-col-nav" data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-12">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-2" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:63521baa-301c-43bf-98d2-71512dc05e3c" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/advertise" >
+          Advertise
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:1e5cbd00-dd5c-49b9-831f-6c0661623771" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/about-us" >
+          About Us
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+  </div>
+
+      </div>
+</div>
+
+</li>
+
+            <li  class="tb-megamenu-item level-1 mega dropdown" data-id="menu_link_content:cb4b35cc-e000-478c-8c88-c4c4d63a16d6" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="1" >
+      <span class="dropdown-toggle tb-megamenu-no-link" aria-expanded="false" tabindex="0">
+          More
+          <span class="caret"></span>
+          </span>
+  <div  class="tb-megamenu-submenu dropdown-menu mega-dropdown-menu nav-child" data-class="" data-width="" role="list">
+  <div class="mega-dropdown-inner">
+          <div  class="tb-megamenu-row row-fluid">
+      <div  class="tb-megamenu-column span12 mega-col-nav" data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-13">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+               <ul  class="tb-megamenu-subnav mega-nav level-1 items-3" role="list">
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:98aa9311-d76e-48a9-94f4-4c3b1e788d3a" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/digikey-videos" >
+          DigiKey Videos
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:f8b34dc4-19f2-439c-a457-8806280cff45" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/events" >
+          Partner Events and Conferences
+          </a>
+  
+</li>
+
+        <li  class="tb-megamenu-item level-2 mega" data-id="menu_link_content:99f4b107-acd3-42d6-802f-67c3f98ccc59" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="1" data-hidewcol="0" data-hidesub="0" data-label="" aria-level="2" >
+      <a href="/calculators" >
+          EE Calculators
+          </a>
+  
+</li>
+
+  </ul>
+
+      </div>
+</div>
+
+  </div>
+
+      </div>
+</div>
+
+</li>
+
+  </ul>
+
+      </div>
+  </div>
+
+  </section>
+
+
+  </div>
+
+
+                  </nav>
+
+          </header>
+  <div class="container-fluid">
+	<div class="row addimage_header">
+		<div class="col-md-12 text-center">
+			  <div class="region region-adv">
+    <section id="block-block-content-db161a04-563e-4313-9376-9c40fd01cd79" class="block block-block-content block-block-contentdb161a04-563e-4313-9376-9c40fd01cd79 clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p></p><center>
+<!-- /21034905/Billboard --><!-- /21034905/Billboard --><div class="digibill">
+<div id="div-gpt-ad-1522423126716-0" style="height:250px; width:970px;">
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1522423126716-0'); });
+</script></div>
+</div>
+<p></p></center>
+</div>
+      
+  </section>
+
+
+  </div>
+
+		</div>
+	</div>
+</div>
+  <div role="main" class="main-container container-fluid js-quickedit-main-content">
+    <div class="row">
+
+                              <div class="col-sm-12" role="heading">
+              <div class="region region-header">
+        <ol class="breadcrumb">
+          <li >
+                  <a href="/">Home</a>
+              </li>
+          <li >
+                  <a href="/microcontroller-projects">Microcontroller Based Projects</a>
+              </li>
+          <li  class="active">
+                  ESP32-CAM AI Vision Assistant Pendant for the Visually Impaired
+              </li>
+      </ol>
+
+<div data-drupal-messages-fallback class="hidden"></div>
+    <h1 class="page-header">
+<span>ESP32-CAM AI Vision Assistant Pendant for the Visually Impaired</span>
+</h1>
+
+
+  </div>
+
+          </div>
+              
+            
+                  <section class="col-sm-9">
+
+                
+                                      
+                  
+                          <a id="main-content"></a>
+          
+            <div class="region region-content">
+      <article data-history-node-id="24534" class="microcontroller full clearfix">
+
+  
+    
+
+      <div>
+      <span><b>Published</b>&nbsp;&nbsp;<span>August 20, 2026 </span>
+            <span class="post_header_comment"><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;&nbsp;0</span>
+    </div>
+
+    <div class="user_data border-0">
+      <div class="row">
+              <div class="col-md-6 col-sm-4">
+          <a href="#">
+            <span class="rounded-circle text-white user_avtar"><img src="/sites/default/files/styles/forum_avatar/public/pictures/Anand.jpg?itok=qPd2MFzI" width="80" height="80" alt="User Avatar" loading="lazy" class="img-responsive" />
+
+  </span>
+          </a>
+                    <span class="name">
+<span><a title="View user profile." href="/users/ananddhaneshan">Anand D</a></span>
+</span><br>
+                    <span class="user-dec">Author</span>
+        </div>
+            </div>
+    </div>
+  
+<div class="content">
+
+  
+            <div class="field field--name-field-project-image field--type-image field--label-hidden field--item">  <img loading="lazy" src="/sites/default/files/projectimage_mic/diy%20eyes%20esp32.jpg" width="750" height="500" alt="ESP32 CAM AI Vision Assistant Pendant" title="ESP32 CAM AI Vision Assistant Pendant" class="img-responsive" />
+
+</div>
+      
+  
+      <div class="field--name-body">
+              <p class="text-align-justify">Moving through unfamiliar environments is a challenging thing for visually impaired people. We have a lot of solutions, from sticks to obstacle-avoidance handheld devices on the market, to solve their problem. In the DIY world, a lot of makers have built obstacle-avoidance sticks using Ultrasonic sensors, IR sensors or even a PIR sensor and different variations of blind assistant pendants as well. All of them either give a beep sound or tactile feedback.&nbsp;</p><p class="text-align-justify">The issue with the above solutions is that none of them is vision-based. Building an ESP32 Cam blind assistance pendant is one of the most practical ways to turn a microcontroller into a genuine assistive-technology device. A vision-based solution gives feedback based on the real surroundings and situations, which is more reliable than a proximity sensor-based solution. Here in this tutorial, we are going to explore an AI Vision Assistant for Visually Impaired People using an ESP32 CAM. In a nutshell, the ESP32 CAM captures an image of the surroundings upon a button click, uploads it to the CircuitDigest cloud, gets a detailed description of it, sends it to Sarvam AI for TTS conversion and plays the audio loudly so that the user can hear it.</p><div class="text-align-center" style="margin:0;padding:0;"><iframe style="display:block;margin:0;padding:0;" width="750" height="422" src="https://www.youtube.com/embed/ha0wF5QHiYc?cc_load_policy=1&amp;controls=1&amp;color=white&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+                                                        </iframe></div><div class="toc" style="background-color:#EBF2FA;border-radius:4px;margin:20px 0;max-width:800px;padding:20px;">
+                  <h3 style="color:#333;font-size:1.2em;margin:0 0 15px 0;"><strong>Table of Contents</strong></h3><ul style="list-style-type:none;margin:0;padding-left:0;"><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#what-is-an-esp32-cam-ai-vision-assistant-pendant"><strong>What Is an ESP32-CAM AI Vision Assistant Pendant?&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#block-diagram"><strong>Block Diagram&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#image-to-text"><strong>Image to Text&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#circuit-diagram"><strong>Circuit Diagram&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#components-required"><strong>Components Required&nbsp;&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#text-to-speech-witai-vs-google-tts-vs-sarvam-ai"><strong>Text-to-Speech: Wit.ai vs Google TTS vs Sarvam AI&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#full-assembly"><strong>Full Assembly&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#code-explanation"><strong>Code Explanation&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#troubleshooting"><strong>Troubleshooting &nbsp;&nbsp;</strong></a></li><li style="margin:5px 0;"><a style="color:#2c5282;display:inline-block;padding:2px 0;text-decoration:none;" href="#github-repository"><strong>&nbsp;GitHub Repository&nbsp;&nbsp;</strong></a></li></ul></div>
+                  <h3 class="text-align-justify" id="what-is-an-esp32-cam-ai-vision-assistant-pendant"><strong>What Is an ESP32-CAM AI Vision Assistant Pendant?</strong></h3><p class="text-align-justify">ESP32-CAM AI Vision Assistant Pendant is not just another wearable device with a camera but a simple smart device that can talk to visually impaired people and describe what is happening around them. Compared to regular sensor-based canes and portable sensory devices, this intelligent pendant helps blind users with AI technology to answer “what do I see ahead of me?” rather than just asking “is there something in front of me?”</p><table><tbody><tr><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>Feature</strong></td><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>Traditional Obstacle-Avoidance Stick</strong></td><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>Traditional Obstacle-Avoidance Stick</strong></td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);"><strong>Detection method</strong></td><td style="border:2pt groove hsl(210, 75%, 60%);">Ultrasonic / IR / PIR proximity</td><td style="border:2pt groove hsl(210, 75%, 60%);">Camera + AI image description</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);"><strong>Feedback type</strong></td><td style="border:2pt groove hsl(210, 75%, 60%);">Beep or vibration only</td><td style="border:2pt groove hsl(210, 75%, 60%);">Full spoken sentence describing the scene</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);"><strong>Identifies objects</strong></td><td style="border:2pt groove hsl(210, 75%, 60%);">No distance only</td><td style="border:2pt groove hsl(210, 75%, 60%);">Yes: people, furniture, obstacles, text</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);"><strong>Form factor</strong></td><td style="border:2pt groove hsl(210, 75%, 60%);">Handheld stick</td><td style="border:2pt groove hsl(210, 75%, 60%);">Hands-free wearable pendant</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);"><strong>Approximate build cost</strong></td><td style="border:2pt groove hsl(210, 75%, 60%);">Low</td><td style="border:2pt groove hsl(210, 75%, 60%);">Low (ESP32 CAM + amplifier + boost converter)</td></tr></tbody></table>   
+                  <h3 class="text-align-justify" id="block-diagram"><strong>Block Diagram</strong></h3><p class="text-align-justify">Below is the block diagram for the whole project.</p><img src="/sites/default/files/inlineimages/u5/ESP-32-Cam-AI-Assistant-Block-Diagram.jpg" data-entity-uuid="7141fc9d-1323-46a1-aa4e-6e483a9a2aac" data-entity-type="file" alt="Block diagram of ESP32 CAM blind assistance pendant showing image capture, CircuitDigest Cloud, and Sarvam AI TTS flow" width="750" height="420"><p class="text-align-justify">This is the high-level block diagram for our project. We have the ESP32 CAM that captures and sends an image to CircuitDigest Cloud, which returns text as a JSON payload describing the image. This text is sent to Sarvam AI to be converted into speech. ESP32 downloads, decodes and plays the converted Base64 audio file. The audio comes to our ears through the speaker after being amplified by the MAX98357 I2S amp.</p><p class="text-align-justify">You can see that we have used two specialised cloud services in this ESP32 CAM AI Vision Assistant Pendant project: CircuitDigest Cloud for Image to Text and Sarvam AI for Text to Speech. Both of them are specialized in their own ways. For additional information, these cloud services can be used in a number of different ways for different purposes. You can visit our collection of <a href="https://circuitdigest.com/esp32-projects" target="_blank">ESP32 based projects</a> and these cloud services. Here is our latest project demonstrating how to use ESP32 CAM and Circuit DigestCloud to build a <a href="https://circuitdigest.com/microcontroller-projects/iot-no-parking-alert-system" target="_blank">No Parking Alert System.</a></p>
+                  <h3 class="text-align-justify" id="image-to-text"><strong>Image to Text</strong></h3><p class="text-align-justify">To convert an Image to Text - describing what is in the picture, the surroundings and all- we have a lot of options out there. But for our project, we are using <a href="https://www.circuitdigest.cloud/" target="_blank">CircuitDigest Cloud.</a> Why CircuitDigest Cloud? Because it's beginner-friendly and has a lot of tutorials to follow as well.</p><p class="text-align-justify">You can easily get started with the Image Analyst API by uploading an image and seeing the results in the same window according to the prompt given.</p><img src="/sites/default/files/inlineimages/u5/Image-to-Text-API-Service-CircuitDigest-Cloud-.jpg" data-entity-uuid="5a48a846-5f4f-429a-a38a-25fedc8c4fd1" data-entity-type="file" alt="CircuitDigest Cloud AI Vision Analyst image-to-text API demo for the ESP32 CAM wearable assistant" width="750" height="500"><p class="text-align-justify">Above is CircuitDigest Cloud’s AI Vision Analyst, which lets us try out the Image to Text Service by uploading/dragging an image into that section without even coding. You can see in the above screenshot how the API accurately responded to my request. If we need to integrate this service into any projects, they provide example code snippets for ESP32, ESP32 CAM, XIAO, RPI, RPI PIO and many more. I copied the snippet for ESP32 CAM to make our own custom code. More of our <a href="https://circuitdigest.com/ai-projects-and-tutorials" target="_blank">AI based projects</a> are listed on our website.</p><img src="/sites/default/files/inlineimages/u5/ESP32-CAM-Snippet.jpg" data-entity-uuid="a3c970bc-242d-4da2-a9c3-05bb319228ca" data-entity-type="file" alt="ESP32 CAM code snippet example from CircuitDigest Cloud for smart blind pendant" width="750" height="500"><p class="text-align-justify">Above is a screenshot from CircuitDigest Cloud that shows the example snippets they provided for ESP32, XIAO S3, Pico W, NodeMCU, Raspberry Pi and Arduino UNO R4 boards. Below are the video tutorials on how to use the service and build a full project with that service. There are a total of around 13 such services provided by CircuitDigest Cloud.</p>
+                  <!-- /21034905/Welcome_Ad2 -->
+<div class="welcomeextra"><div id="div-gpt-ad-1508834807558-1" style="width: 640px; height: 480px;">
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+googletag.cmd.push(function() { googletag.display("div-gpt-ad-1508834807558-1"); });
+</script>
+</div></div><h3 class="text-align-justify" id="circuit-diagram"><strong>Circuit Diagram</strong></h3><p class="text-align-justify">Below is the circuit diagram for the whole project.</p><a href="https://circuitdigest.com/fullimage?i=circuitdiagram_mic/Circuit-Diagram-of-ESP32-CAM-AI-Vision-Assistant.jpg" target="_blank" rel="noopener"><img src="/sites/default/files/circuitdiagram_mic/Circuit-Diagram-of-ESP32-CAM-AI-Vision-Assistant.jpg" data-entity-uuid="insert-image-845f2c94-f158-4f88-bf7a-3e60b90a5a74" data-entity-type="file" alt="Circuit Diagram of ESP32 CAM AI Vision Assistant" width="750" height="420" title="Circuit Diagram of ESP32 CAM AI Vision Assistant"></a><p class="text-align-justify">Above is the full circuit diagram for the project. Starting from the battery, we can see that the battery is connected to the 5V Boost Converter with a switch in series. Any 5V Boost converter will work here. This 5v boost converter provides operating voltage for the ESP32 as well as the MAX98357 I2S Amplifier as well. The pin configurations are mentioned below in the table.&nbsp;<br>The gain pin is left free as we’re not using the physical gain adjustment. We’ll be adjusting the gain at the software level. You can see how to do that in the code explanation section.</p><p class="text-align-justify">There is no specific rule that you should use the same components shown in this circuit diagram. We have several 5V boost converters available in the market. You can use any of them which can deliver an average of 600mA. The MAX98357 also comes in some slight variations, but all should work. Instead of a limit switch to trigger the image capturing, you can use a wake word or something like that as well.</p> 
+                  <h3 class="text-align-justify" id="components-required"><strong>Components Required&nbsp;</strong></h3><table><tbody><tr><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>S No</strong></td><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>Name</strong></td><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>Description</strong></td><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>Qty</strong></td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">1</td><td style="border:2pt groove hsl(210, 75%, 60%);"><meta charset="utf-8"><p>ESP32 CAM</p></td><td style="border:2pt groove hsl(210, 75%, 60%);">Main microcontroller</td><td style="border:2pt groove hsl(210, 75%, 60%);">1</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">2</td><td style="border:2pt groove hsl(210, 75%, 60%);">MAX98357 I2S Amplifier</td><td style="border:2pt groove hsl(210, 75%, 60%);">To amplify the audio</td><td style="border:2pt groove hsl(210, 75%, 60%);">1</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">3</td><td style="border:2pt groove hsl(210, 75%, 60%);">HW-105 5V Boost Converter</td><td style="border:2pt groove hsl(210, 75%, 60%);">To supply 5V to ESP32 CAM and MAX98357</td><td style="border:2pt groove hsl(210, 75%, 60%);">1</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">4</td><td style="border:2pt groove hsl(210, 75%, 60%);">Limit Switch</td><td style="border:2pt groove hsl(210, 75%, 60%);">Trigger for capturing an image</td><td style="border:2pt groove hsl(210, 75%, 60%);">1</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">5</td><td style="border:2pt groove hsl(210, 75%, 60%);">Button Switch</td><td style="border:2pt groove hsl(210, 75%, 60%);">Changing language</td><td style="border:2pt groove hsl(210, 75%, 60%);">1</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">6</td><td style="border:2pt groove hsl(210, 75%, 60%);">Toggle Button</td><td style="border:2pt groove hsl(210, 75%, 60%);">Turn on/off the device</td><td style="border:2pt groove hsl(210, 75%, 60%);">1</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">7</td><td style="border:2pt groove hsl(210, 75%, 60%);">USB - TTL Converter</td><td style="border:2pt groove hsl(210, 75%, 60%);">To program the ESP32-CAM</td><td style="border:2pt groove hsl(210, 75%, 60%);">1</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">8</td><td style="border:2pt groove hsl(210, 75%, 60%);">Jumper wires</td><td style="border:2pt groove hsl(210, 75%, 60%);">To connect the components</td><td style="border:2pt groove hsl(210, 75%, 60%);">&nbsp;-</td></tr></tbody></table><img src="/sites/default/files/inlineimages/u5/ESP32-CAM-AI-Vision-Assistant-Components-Required.jpg" data-entity-uuid="fb66c98a-0f48-4d7c-93a0-b6997e45e6d2" data-entity-type="file" alt="Components required for building an ESP32 CAM wearable assistant for visually impaired users" width="750" height="500"> 
+                  <!-- /21034905/CD_Half_Page_Banner2 -->
+<div id="div-gpt-ad-1719307821746-0" style="min-width: 300px; min-height: 600px;"">
+  <script type="0226ff5781d26680fcbd8d9c-text/javascript">
+    googletag.cmd.push(function() { googletag.display("div-gpt-ad-1719307821746-0"); });
+  </script>
+</div><h3 class="text-align-justify" id="text-to-speech-witai-vs-google-tts-vs-sarvam-ai"><strong>Text-to-Speech: Wit.ai vs Google TTS vs Sarvam AI</strong></h3><p class="text-align-justify">The right selection of a text-to-speech engine plays an equal role as the vision model for a smart pendant for visually impaired users built with AI. We evaluated three alternatives before finally picking the one we needed.</p><table><tbody><tr><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>TTS Engine</strong></td><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>Character Limit</strong></td><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>Indic Language Support</strong></td><td style="background-color:#ade8ff;border:2pt groove hsl(210, 75%, 60%);"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Best For</strong></td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">Wit.ai (Meta)</td><td style="border:2pt groove hsl(210, 75%, 60%);">280 characters/request</td><td style="border:2pt groove hsl(210, 75%, 60%);">Limited</td><td style="border:2pt groove hsl(210, 75%, 60%);">Short English-only alerts</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">Google TTS</td><td style="border:2pt groove hsl(210, 75%, 60%);">5000 characters/request</td><td style="border:2pt groove hsl(210, 75%, 60%);">Good, but generic</td><td style="border:2pt groove hsl(210, 75%, 60%);">Reliable, general-purpose speech</td></tr><tr><td style="border:2pt groove hsl(210, 75%, 60%);">Sarvam AI (Bulbul v3)</td><td style="border:2pt groove hsl(210, 75%, 60%);">&nbsp;&nbsp;&nbsp;2500 characters/request</td><td style="border:2pt groove hsl(210, 75%, 60%);">Strong - built for Indic languages</td><td style="border:2pt groove hsl(210, 75%, 60%);">Natural multilingual speech (Hindi, English, Tamil, Malayalam)</td></tr></tbody></table><p class="text-align-justify">For converting text to Speech, we have a lot of options out there. First of all, we tried out <a href="http://Wit.ai" target="_blank" rel="nofollow">Wit.ai,</a> a service from Meta. We have a detailed article that teaches you<a href="https://circuitdigest.com/microcontroller-projects/esp32-text-to-speech-using-ai" target="_blank"> how to do Text-to-Speech using Wit</a>, which you can check out. &nbsp;After some trials with Wit, we jumped to a different option, as Wit has a character limit of 280 characters per API request. The second try was with Google’s TTS. It was nice and worked flawlessly, but we wanted something more interesting. It was at this time that we found Sarvam AI. They are headquartered in Bengaluru and specialise in Indic languages. If you are more interested in Text-to-Speech in offline mode, we have a dedicated tutorial for the <a href="https://circuitdigest.com/microcontroller-projects/esp32-text-to-speech-offline-system" target="_blank">ESP32 Text-to-Speech Offline</a> System.</p><img src="/sites/default/files/inlineimages/u5/Sarvam-AI-Home-Page.jpg" data-entity-uuid="198f92e8-538a-4ab4-b87f-ee56965d803b" data-entity-type="file" alt="Sarvam AI Bulbul text-to-speech homepage used in the ESP32 CAM blind assistance pendant" width="750" height="400">    
+                  <!-- /21034905/Welcome_Ad3 -->
+<div class="welcomeextra"><div id="div-gpt-ad-1632744355244-0" style="width: 640px; height: 480px;">
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+googletag.cmd.push(function() { googletag.display("div-gpt-ad-1632744355244-0"); });
+</script>
+</div></div><h3 class="text-align-justify" id="full-assembly"><strong>Full Assembly</strong></h3><p class="text-align-justify">Here is the final assembled hardware with its chain.</p><img src="/sites/default/files/inlineimages/u5/ESP32-CAM-AI-Vision-Assistant-Assembly.jpg" data-entity-uuid="1464a6c9-429c-4d1c-8e18-34670c2428e0" data-entity-type="file" alt="Fully assembled ESP32 CAM blind assistance pendant with 3D-printed enclosure and chain" width="750" height="500"><p class="text-align-justify">Let’s take a look at the full assembly of the project. If we take a close look at the 3D-printed enclosure, we can see that there is a slit that lets the PCB antenna protrude so that we are not consuming any internal enclosure space to accommodate the antenna, and the pendant looks compact because of this. All the components are carefully organised inside. The on/off toggle button, language-changing button switch and a small limit switch are mounted so that they are accessible from the backside of the device. The chain is also 3D printed using red colour PLA. The LID snaps into the two slits provided on either side of the body. The <a href="https://thingiverse.com/thing:7398409" target="_blank" rel="nofollow">STL files</a> for this can be found below.&nbsp;</p>        
+                  <h3 class="text-align-justify" id="code-explanation"><strong>Code Explanation</strong></h3><p class="text-align-justify">Now let's take a look at the final code for the project. Basically, 4 values need to be modified to make this work: the SSID name, Password, CircuitDigest Cloud AI Vision Analyst API key, and Sarvaam API Key.</p><pre><code class="language-cpp">#define BOARD_HAS_PSRAM
+#include "esp_camera.h"
+#include &lt;WiFi.h&gt;
+#include &lt;WiFiClientSecure.h&gt;
+#include &lt;HTTPClient.h&gt;
+#include &lt;ArduinoJson.h&gt;
+#include "driver/i2s.h"
+#include "mbedtls/base64.h"
+#include "soc/soc.h"
+#include "soc/rtc_cntl_reg.h"
+#ifndef RTC_CNTL_BROWNOUT_REG
+ #define RTC_CNTL_BROWNOUT_REG RTC_CNTL_BROWN_OUT_REG
+#endif
+// =========================================================================
+//  CONFIGURATIONS &amp; API KEYS
+// =========================================================================
+const char* ssid        = "YOUR_SSID";
+const char* password    = "YOUR_PASSWORD";
+const char* visionApiKey = "YOUR_CIRCUITDIGEST_CLOUD_API_KEY";             
+const char* sarvamKey    = "YOUR_SARVAM_API_KEY";
+const float AUDIO_GAIN_FACTOR = 2.5f;
+// --- PINS ---
+#define CAPTURE_BTN_PIN 13    
+#define LANG_BTN_PIN    2     
+#define FLASH_LED_PIN   4    
+// --- MAX98357A I2S PINS (Shared with Camera Data Lines) ---
+#define I2S_BCLK       14
+#define I2S_LRC        12
+#define I2S_DOUT       15
+#define I2S_NUM        I2S_NUM_0</code></pre><p class="text-align-justify">At the very beginning, we have the library initialization, followed by the WIFI network and API credentials section and the pin mapping part. GPIO pin 13 is used for image capturing, pin 2 for changing languages and pin 4 for flashing the built-in Flash LED. GPIO pins 14, 12 and 15 are being used for the I2S amplifier.</p><p class="text-align-justify"><strong>Language Configuration Array</strong></p><pre><code class="language-cpp">// --- LANGUAGE CONFIGURATIONS ---
+struct LanguageConfig {
+ const char* code;         
+ const char* voice;        
+ const char* name;         
+ const char* prompt;       
+ const char* notifyText;   
+ const char* wifiConnectedText;
+};
+// Optimized prompts under 12 words
+LanguageConfig languages[] = {
+ { "hi-IN", "shubh",   "Hindi"},
+ { "en-IN", "shubh",   "English"},
+ { "ta-IN", "kavitha", "Tamil"},
+ { "ml-IN", "gokul",   "Malayalam"}
+};</code></pre><p class="text-align-justify">Stores settings for 4 languages: Hindi (hi-IN), English (en-IN), Tamil (ta-IN), and Malayalam (ml-IN). Details about Sarvam AI’s models, language models and all can be found in their <a href="https://indus.sarvam.ai/api-playground/speech-to-text" target="_blank" rel="nofollow">official documentation</a>. Each entry contains the target language code, speaker voice profile name, custom prompt, and pre-translated status messages for system alerts. We are creating an array using these values.</p><p class="text-align-justify"><strong>initI2S() - Initialising the Audio Amplifier</strong></p><pre><code class="language-cpp">void initI2S(uint32_t sampleRate) {
+ if (i2sInitialized) {
+   i2s_driver_uninstall(I2S_NUM);
+   i2sInitialized = false;
+ }
+ i2s_config_t i2s_config = {
+   .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
+   .sample_rate = sampleRate,
+   .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
+   .channel_format = I2S_CHANNEL_FMT_RIGHT_LEFT,
+   .communication_format = I2S_COMM_FORMAT_STAND_I2S,
+   .intr_alloc_flags = ESP_INTR_FLAG_LEVEL1,
+   .dma_buf_count = 8,
+   .dma_buf_len = 512,
+   .use_apll = false,
+   .tx_desc_auto_clear = true,
+   .fixed_mclk = 0
+ };
+ i2s_pin_config_t pin_config = {
+   .bck_io_num = I2S_BCLK,
+   .ws_io_num = I2S_LRC,
+   .data_out_num = I2S_DOUT,
+   .data_in_num = I2S_PIN_NO_CHANGE
+ };
+ if (i2s_driver_install(I2S_NUM, &amp;i2s_config, 0, NULL) == ESP_OK) {
+   i2s_set_pin(I2S_NUM, &amp;pin_config);
+   i2s_zero_dma_buffer(I2S_NUM);
+   i2sInitialized = true;
+ }
+}</code></pre><p class="text-align-justify">This function initializes the MAX98357A I2S amplifier at a specified sampling rate of 16,000 Hz.<br>Checks if I2S is already running; if so, uninstalls the driver first. Why do we have to do these initialization, deinitialization? Because the ESP32 CAM has a limited number of GPIOs available for use, and out of them most of them are internally used for the camera sensor and the onboard memory card reader.</p><p class="text-align-justify"><strong>stopI2S() and initCameraHardware()</strong></p><pre><code class="language-cpp">void stopI2S() {
+ if (i2sInitialized) {
+   i2s_zero_dma_buffer(I2S_NUM);
+   delay(50);
+   i2s_driver_uninstall(I2S_NUM);
+   i2sInitialized = false;
+ }
+}
+Safely shuts down the I2S driver to release shared GPIO pins back to the camera module.
+bool initCameraHardware() {
+}</code></pre><p class="text-align-justify">Configures and initializes the OV2640 camera sensor. Calls stopI2S() to release GPIOs 12, 14, and 15. Sets up the camera pin configurations. Configures image buffer storage location in PSRAM if detected, or standard DRAM if PSRAM is absent. Initializes the camera with esp_camera_init(). Returns true if successful.</p><p class="text-align-justify"><strong>extractBase64Audio() -Parsing the TTS Response</strong></p><pre><code class="language-cpp">String extractBase64Audio(const String&amp; jsonResponse) {
+ int keyIndex = jsonResponse.indexOf("\"audios\":[\"");
+ if (keyIndex == -1) keyIndex = jsonResponse.indexOf("\"audios\": [\"");
+ if (keyIndex != -1) {
+   int start = jsonResponse.indexOf("\"", keyIndex + 10) + 1;
+   int end   = jsonResponse.indexOf("\"", start);
+   if (start &gt; 0 &amp;&amp; end &gt; start) {
+     return jsonResponse.substring(start, end);
+   }
+ }
+ return "";
+}</code></pre><p class="text-align-justify">This function parses the incoming JSON payload from the Sarvam TTS API to isolate the Base64 audio string without overloading internal memory with heavy JSON parsing trees.</p><p class="text-align-justify"><strong>playWAVBuffer() and speakWithSarvam()</strong></p><pre><code class="language-cpp">unsigned long playWAVBuffer(uint8_t* wavData, size_t wavLen) {
+}</code></pre><p class="text-align-justify">Reads raw PCM/WAV byte stream data, applies audio amplification, and streams it to the speaker via I2S.</p><pre><code class="language-cpp">bool speakWithSarvam(String text, const char* langCode, const char* voiceModel, TTSTiming &amp;timing) {</code></pre><p class="text-align-justify">Initializes WiFiClientSecure with setInsecure() and converts input text into spoken audio by sending an HTTP POST request to the Sarvam AI BulBul v3 TTS endpoint.</p><p class="text-align-justify"><strong>setup() - Boot Sequence</strong></p><pre><code class="language-cpp">void setup() {
+ WRITE_PERI_REG(RTC_CNTL_BROWNOUT_REG, 0);
+ Serial.begin(115200);
+ pinMode(CAPTURE_BTN_PIN, INPUT_PULLUP);
+ pinMode(LANG_BTN_PIN, INPUT_PULLUP); 
+ pinMode(FLASH_LED_PIN, OUTPUT);
+ digitalWrite(FLASH_LED_PIN, LOW);
+ Serial.println("\n========================================");
+ Serial.println("  ESP32-CAM Multi-Language Vision TTS  ");
+ Serial.println("========================================\n");
+ WiFi.begin(ssid, password);
+ WiFi.setSleep(false);
+ Serial.print("[WIFI] Connecting");
+ while (WiFi.status() != WL_CONNECTED) {
+   delay(500);
+   Serial.print(".");
+ }
+ Serial.println("\n[WIFI OK] Connected!");
+ TTSTiming dummyTiming = {0};
+ LanguageConfig current = languages[currentLangIndex];
+ speakWithSarvam(current.wifiConnectedText, current.code, current.voice, dummyTiming);
+ Serial.printf("\n&gt;&gt;&gt; System Ready! Current Language: %s &lt;&lt;&lt;\n", current.name);
+ Serial.println("&gt;&gt;&gt; Capture Photo: GPIO 13 | Language Select: GPIO 2 &lt;&lt;&lt;");
+}</code></pre><p class="text-align-justify">This disables the internal brownout detector to prevent unwanted power resets when the onboard Wi-Fi chip or Flash LED draws sudden current spikes. Configures button pins with internal pull-up resistors and the LED pin as OUTPUT. Connects to the configured SSID and turns off Wi-Fi sleep mode to minimise network latency. Calls speakWithSarvam() using the default language index (Hindi) to play "Wi-Fi connected successfully".</p><p class="text-align-justify"><strong>loop() - Capture and Language Switching</strong></p><pre><code class="language-cpp">void loop() {
+ if (millis() - lastBtnPressTime &lt; 500) return;
+ // Button 13: Capture Image &amp; Process
+ if (digitalRead(CAPTURE_BTN_PIN) == LOW) {
+   lastBtnPressTime = millis();
+   captureAndAnalyze();
+ }
+ // Button 2: Toggle Language
+ if (digitalRead(LANG_BTN_PIN) == LOW) {
+   lastBtnPressTime = millis();
+   
+   currentLangIndex = (currentLangIndex + 1) % TOTAL_LANGUAGES;
+   LanguageConfig current = languages[currentLangIndex];
+   Serial.printf("\n[LANG] Switched to: %s\n", current.name);
+   TTSTiming dummyTiming = {0};
+   speakWithSarvam(current.notifyText, current.code, current.voice, dummyTiming);
+ }
+}</code></pre><p class="text-align-justify">Implements software debouncing by ensuring at least 500 milliseconds pass between successive button presses. Capture Button (GPIO 13) - Calls captureAndAnalyze() when pressed. Language Toggle Button (GPIO 2) - Increments currentLangIndex sequentially, toggling between Hindi, English, Tamil, and Malayalam and plays the corresponding language confirmation announcement (e.g., "Malayalam language selected").</p>
+                  <h3 class="text-align-justify" id="troubleshooting"><strong>Troubleshooting &nbsp;</strong></h3><p class="text-align-justify"><strong>» Code not getting uploaded to ESP32 CAM.</strong><br>The ESP32 CAM needs to be in programming mode to flash the code. Make sure GPIO 0 is grounded so that it's in programming mode.</p><p class="text-align-justify"><strong>» All connections are done properly, but it's not turning on.</strong><br>This device consumes a decent amount of power. So, ensure your battery has enough power.</p>
+                  <h3 class="text-align-justify" id="conclusion"><strong>Conclusion</strong></h3><p class="text-align-justify">What we built in this tutorial is just the starting point, and this can be further expanded to solve real-life problems. We learned how to share the same GPIO pins between multiple devices, as the ESP32-CAM has a limited number of GPIOs available for use and turned the same ESP32 CAM into an instant ESP32-CAM wearable AI vision assistant. This project proves that accessible technology doesn't have to cost thousands of dollars. If you want to build your own, the full open-source code, 3D print files, and circuit diagram are free at the link below.</p><p class="text-align-justify">With future upgrades like capacitive touch sensors, proximity sensor-based triggering, and custom wearable enclosures, this architecture lays a solid foundation for lightweight, hands-free navigation aids. We learned how to time-share limited GPIOs between the camera and audio subsystems, and turned a basic ESP32 CAM into a functional ESP32 CAM wearable assistant for visually impaired users.</p>
+                  <h3 class="text-align-justify" id="github-repository"><strong>&nbsp;GitHub Repository&nbsp;</strong></h3><p>The complete source code and project files are available in the GitHub repository. It includes the ESP32-CAM implementation, AI vision logic, and supporting resources required to build the project. Explore the repository to understand the implementation, modify the code, and extend the system with new features.</p><p class="text-align-justify"><meta charset="utf-8"><a href="https://github.com/Circuit-Digest/ESP32CAM_AI_PENDANT" target="_blank"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><img style="border-style:none;" src="data:image/png;base64,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" alt="ESP32-CAM AI Vision Assistance Pendant" width="275" height="79"></span></a><a href="https://github.com/Circuit-Digest/ESP32CAM_AI_PENDANT/archive/refs/heads/main.zip" target="_blank"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><img style="border-style:none;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABPCAYAAABI6IP/AAAFD0lEQVR4AeyaSUgsVxSGj4VDnDtKtwYUJBhnVDAoiq7UVVwIikIeOKBggriwURTECRdPIW7FAZxjooKCwyKBbBIEXYggaCQvSNooYisisXEIqDmnSJf97Lav773q0kef5p6qW+e/1ffer05V3bpVEgBEs8HnyOBTNLsk6fX6Jnc3g8HQGBwcXIN0vkKLRVOSFBgYWO3uFhAQ8E1oaOjrqKiooZCQkFdI50s0OUm5ublyhhcAkiR9ptPpWsPCwr5FHmloQNcgWrPZEPD396/AUy4fXXoGhBQcJCkoKKgA/V8wIKTgKHl6esaj38CAkIKj5OHhoUP/JwwIKTySiI0HLR7R2U0EGBBRcGIMyAkckhgQUXBiDMgJHJLeHRDt5UbGgAQHmwExIAEBgcwRxIAEBAQyRxADEhAQyBxBDEhAQCBzBH1MgAoKCqC8vBx8fX0FzdZOfjERFBMTAw0NDVBfXw/5+fRCQTsIzmp6MYCKioogMjIS8CUmVFdXO2uzppoWgJ7UIW9vb6UcTpgr+efOvBhAd3d3z83CYf0vBpDD1r0AJwMSHAQGxIAEBAQyRxADEhAQyBxBDEhAQCBrGkH0GNHf3w9jY2OQkJAgaNq9HBwcDL29vTA5OQlRUVH3ggY5TQGVlpbKD6LZ2dkwMTEBaWnyZ4BOu2kwGGB4eBgKCwshMzMT2tranJZXW9QU0OHhodJ+nU4Ho6OjkJ6ervgeZujhdX5+HlJTUxXJZDIpeS0ymgJaXl4G6rC1Y35+fjA4OAhJSUlgsVisbri6ugK9Xg99fX0QHh6u+NfX16G7u1vZ1iKjKSDqUFNT01uQ6Lo0MjICOTk5JMtmwNPq4XVqZ2cH6urq4Pr6Wi6j1UJzQDc3N9DY2Aizs7NKH0NCQiA5OVnZjoiIgNjY+w/et7a2oKKiAo6OjpQyWmU0B0Qdo6mN5uZmmJ6epk2ntrm5KcM5Pj52Ws5V4rMAsnamtbUV1tbWrJt26729PaisrITT01M7TSvHswKi062mpgZWV1ft+ms2m6G2thbOzs7sNC0dqgOiW/PAwADMzMwAzTOLOnN+fg5VVVUwPj6uFKWoKi4uhu3tbcX3WCYlJUUeU01NTcnjpMfKva9fdUBlZWWQl5cnDwJbWlrA399f2Da6rXd2dspvNXp6emRgBwcHwv2ogNFohKysLMjIyICSkhJyqWqqAwoICFAaKEkSeHl5wVN/NEaicdHl5eVTd3nrAFB9T97xiQVVB3R7e6tUTXcrMsXhgozt/9vm1apKdUC2R5Giia5Fi4uLsLS0pLrRyDwxMVFh4YrXRaoDouuJtcUEKzo6Wn5yj4+PB7UtLi4OfHx8rNXBRxFBCwsLQLdvpdUaZhwNFz60etUjaGNjQx7cDQ0NyfM3NK3hahvFWQF6fKHT+UOBPNxfdUBUwcrKCtBTd3t7O3R0dLjcurq6YG5uDmxvENQONcwlgNRo2Dv+h8uKMyABWgbEgAQEBDJHEAMSEBDIHEEMSEBAIHMEMSABAYHMEcSABAQEMkcQAxIQEMjuG0ECMFaZAVlJ2K//RdcNA0IKjhJOG9PHTP8wIEd00IcvH37D1V8MCCk8TDh1+/fJycnP6H/DgJCCbcJTy2Q2m3twTV9U8DXofzi3COR3i8Uyur+/33pxcfET+t+ggYQv377b3d392s3tlclkqsPIeY2gvkcwf6LJSTIajb9i7gc3tx+x/7+g/YF2/3EBAPwHAAD//0pVcmIAAAAGSURBVAMAyugGFqrt9sMAAAAASUVORK5CYII=" alt="ESP32-CAM AI Vision Assistance Pendant Zip File" width="72" height="79"></span></a></p>
+                  <h3 id="ai-powered-esp32-cam-vision-and-object-detection-applications"><strong>AI-Powered ESP32-CAM Vision and Object Detection Applications</strong></h3><p class="rtejustify">These projects demonstrate how the ESP32-CAM can be combined with AI and computer vision for real-world detection tasks. From parking-space detection and object recognition to helmet detection, the system enables intelligent image-based decision-making.</p><div class="row"><div class="col-md-3 prod_img"><a href="https://circuitdigest.com/microcontroller-projects/esp32-cam-parking-space-detection-system-using-circuitdigest-cloud"><img style="border-radius:8px;object-fit:cover;" src="https://circuitdigest.com/sites/default/files/projectimage_mic/Parking-Space-Detection-Using-ESP32-Cam_0.jpg" alt="How to Build a Parking Space Detection System Using ESP32-CAM with CircuitDigest Cloud" width="300" height="200" title="How to Build a Parking Space Detection System Using ESP32-CAM with CircuitDigest Cloud"></a></div><div class="col-md-9 prod_con"><p><a style="font-size:18px;" href="https://circuitdigest.com/microcontroller-projects/esp32-cam-parking-space-detection-system-using-circuitdigest-cloud">How to Build a Parking Space Detection System Using ESP32-CAM with CircuitDigest Cloud</a></p><p><em>This project solves exactly that problem by building a smart, automatic parking space detection system using the ESP32-CAM and the CircuitDigest Cloud API.</em></p></div></div><div class="row"><div class="col-md-3 prod_img"><a href="https://circuitdigest.com/microcontroller-projects/object-recognition-using-esp32-cam-and-edge-impulse"><img style="border-radius:8px;object-fit:cover;" src="https://circuitdigest.com/sites/default/files/projectimage_mic/object-detection-esp32cam.png" alt="Object Detection using ESP32-CAM and Edge Impulse" width="300" height="200" title="Object Detection using ESP32-CAM and Edge Impulse"></a></div><div class="col-md-9 prod_con"><p><a style="font-size:18px;" href="https://circuitdigest.com/microcontroller-projects/object-recognition-using-esp32-cam-and-edge-impulse">Object Detection using ESP32-CAM and Edge Impulse</a></p><p><em>In this project, we have used the popular ESP32-CAM module to build an Image recognition system that can identify various vegetables. We have used the Edge Impulse platform to train our model and deployed it on the ESP32cam module; the results of the model are displayed on the OLED screen as output.</em></p></div></div><div class="row"><div class="col-md-3 prod_img"><a href="https://circuitdigest.com/microcontroller-projects/esp32cam-helmet-detection-using-circuitdigest-cloud"><img style="border-radius:8px;object-fit:cover;" src="https://circuitdigest.com/sites/default/files/projectimage_mic/Helmet-Detection.jpg" alt="How to Do Helmet Detection with ESP32-CAM Using CircuitDigest Cloud" width="300" height="200" title="How to Do Helmet Detection with ESP32-CAM Using CircuitDigest Cloud"></a></div><div class="col-md-9 prod_con"><p><a style="font-size:18px;" href="https://circuitdigest.com/microcontroller-projects/esp32cam-helmet-detection-using-circuitdigest-cloud">How to Do Helmet Detection with ESP32-CAM Using CircuitDigest Cloud</a></p><p><em>A compact ESP32-CAM captures the image and sends it securely to the CircuitDigest Cloud, where powerful AI models do the real work, analysing the image and detecting helmet usage within seconds.&nbsp;</em></p></div></div>
+      </div>
+
+<!-- /21034905/billboard_3 -->
+<div class="billboardbottom" style="overflow:scroll; overflow-x:scroll; -webkit-overflow-scrolling: touch;">
+<div id='div-gpt-ad-1721987993455-0' style='min-width: 970px; min-height: 250px;'>
+  <script type="0226ff5781d26680fcbd8d9c-text/javascript">
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1721987993455-0'); });
+  </script>
+</div>
+</div>
+
+
+<style>
+.code-block-wrapper h3 {
+ color: #0e3d79;
+ font-size: 24px;
+ margin-top: 20px;
+ margin-bottom: 10px;
+ font-family: inherit;
+ font-weight: 500;
+ line-height: 1.1;
+}
+.code-block-wrapper {
+ margin: 2em 0;
+ position: relative;
+}
+.code-block {
+ margin: 0;
+ position: relative;
+}
+.code-block pre {
+ min-height: 100px;
+ max-height: 600px;
+ overflow-x: auto;
+ margin: 0;
+ padding: 1.5em;
+ background: #1E1E1E;
+ border-radius: 6px;
+ border: 1px solid #333;
+ white-space: pre !important;
+ tab-size: 4;
+ -moz-tab-size: 4;
+ -o-tab-size: 4;
+}
+.code-block code {
+ font-family: 'Consolas', Monaco, 'Andale Mono', monospace;
+ font-size: 15px;
+ line-height: 1.5;
+ color: #D4D4D4;
+ display: block;
+ width: 100%;
+ white-space: pre !important;
+ word-break: keep-all !important;
+ overflow-wrap: normal !important;
+ hyphens: none !important;
+}
+.code-block pre::-webkit-scrollbar {
+ width: 8px;
+ height: 8px;
+}
+.code-block pre::-webkit-scrollbar-track {
+ background: #2c2c2c;
+ border-radius: 4px;
+}
+.code-block pre::-webkit-scrollbar-thumb {
+ background: #666;
+ border-radius: 4px;
+}
+.code-block pre::-webkit-scrollbar-thumb:hover {
+ background: #888;
+}
+/* Copy Button Styles */
+.copy-button {
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ padding: 8px 12px;
+ background: #4CAF50;
+ color: white;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+ font-size: 14px;
+ transition: background 0.3s ease;
+ z-index: 10;
+}
+.copy-button:hover {
+ background: #45a049;
+}
+.copy-button.copied {
+ background: #2196F3;
+}
+</style>
+
+<div class="code-block-wrapper">
+ <h3><strong>Complete Project Code</strong></h3>
+ <div class="code-block"><button class="copy-button">Copy Code</button>
+     <pre><code class="language-arduino line-numbers">#define BOARD_HAS_PSRAM
+#include "esp_camera.h"
+#include &lt;WiFi.h&gt;
+#include &lt;WiFiClientSecure.h&gt;
+#include &lt;HTTPClient.h&gt;
+#include &lt;ArduinoJson.h&gt;
+#include "driver/i2s.h"
+#include "mbedtls/base64.h"
+#include "soc/soc.h"
+#include "soc/rtc_cntl_reg.h"
+#ifndef RTC_CNTL_BROWNOUT_REG
+&nbsp;#define RTC_CNTL_BROWNOUT_REG RTC_CNTL_BROWN_OUT_REG
+#endif
+// =========================================================================
+// &nbsp;CONFIGURATIONS &amp; API KEYS
+// =========================================================================
+const char* ssid &nbsp; &nbsp; &nbsp; &nbsp;= "your_ssid";
+const char* password &nbsp; &nbsp;= "your_password";
+const char* visionApiKey = "your_circuitdigest_API_key"; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+const char* sarvamKey &nbsp; &nbsp;= "your_sarvam_API_key";
+// Audio gain multiplier for digital volume boost (Range: 0.0f = Mute, 1.0f = Original, 2.5f = Loud/Clear, &gt;3.5f = Distortion)
+const float AUDIO_GAIN_FACTOR = 2.5f;
+// --- PINS ---
+#define CAPTURE_BTN_PIN 13 &nbsp; &nbsp;
+#define LANG_BTN_PIN &nbsp; &nbsp;2 &nbsp; &nbsp;&nbsp;
+#define FLASH_LED_PIN &nbsp; 4 &nbsp; &nbsp;
+// --- MAX98357A I2S PINS (Shared with Camera Data Lines) ---
+#define I2S_BCLK &nbsp; &nbsp; &nbsp; 14
+#define I2S_LRC &nbsp; &nbsp; &nbsp; &nbsp;12
+#define I2S_DOUT &nbsp; &nbsp; &nbsp; 15
+#define I2S_NUM &nbsp; &nbsp; &nbsp; &nbsp;I2S_NUM_0
+// --- LANGUAGE CONFIGURATIONS ---
+struct LanguageConfig {
+&nbsp;const char* code; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;const char* voice; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;const char* name; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;const char* prompt; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;const char* notifyText; &nbsp;&nbsp;
+&nbsp;const char* wifiConnectedText;
+};
+// Optimized prompts under 12 words
+LanguageConfig languages[] = {
+&nbsp;{ "hi-IN", "shubh", &nbsp; "Hindi", &nbsp; &nbsp; "Describe obstacles directly ahead for a blind user in Hindi in under 15 words. State if path is clear or blocked.", "हिंदी भाषा चुनी गई है", &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "वाई-फाई कनेक्ट हो गया है" },
+&nbsp;{ "en-IN", "shubh", &nbsp; "English", &nbsp; "Describe obstacles directly ahead for a blind user in English in under 15 words. State if path is clear or blocked.", "English language selected", &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"Wi-Fi connected successfully" },
+&nbsp;{ "ta-IN", "kavitha", "Tamil", &nbsp; &nbsp; "Describe obstacles directly ahead for a blind user in Tamil in under 15 words. State if path is clear or blocked.", "தமிழ் மொழி தேர்ந்தெடுக்கப்பட்டது", &nbsp; &nbsp; "வைஃபை இணைக்கப்பட்டது" },
+&nbsp;{ "ml-IN", "gokul", &nbsp; "Malayalam", "Describe obstacles directly ahead for a blind user in Malayalam in under 15 words. State if path is clear or blocked.", "മലയാളം ഭാഷ തിരഞ്ഞെടുത്തു", &nbsp; &nbsp; &nbsp; &nbsp; "വൈഫൈ കണക്റ്റായി" }
+};
+const int TOTAL_LANGUAGES = 4;
+int currentLangIndex = 0;&nbsp;
+const float speechPace = 0.90;
+unsigned long lastBtnPressTime = 0;
+bool i2sInitialized = false;
+// --- CAMERA PINOUT ---
+#define PWDN_GPIO_NUM &nbsp;32
+#define RESET_GPIO_NUM -1
+#define XCLK_GPIO_NUM &nbsp; 0
+#define SIOD_GPIO_NUM &nbsp;26
+#define SIOC_GPIO_NUM &nbsp;27
+#define Y9_GPIO_NUM &nbsp; &nbsp;35
+#define Y8_GPIO_NUM &nbsp; &nbsp;34
+#define Y7_GPIO_NUM &nbsp; &nbsp;39
+#define Y6_GPIO_NUM &nbsp; &nbsp;36
+#define Y5_GPIO_NUM &nbsp; &nbsp;21
+#define Y4_GPIO_NUM &nbsp; &nbsp;19
+#define Y3_GPIO_NUM &nbsp; &nbsp;18
+#define Y2_GPIO_NUM &nbsp; &nbsp; 5
+#define VSYNC_GPIO_NUM 25
+#define HREF_GPIO_NUM &nbsp;23
+#define PCLK_GPIO_NUM &nbsp;22
+// Struct for benchmark timing calculations
+struct TTSTiming {
+&nbsp;unsigned long tts_connect;
+&nbsp;unsigned long tts_post;
+&nbsp;unsigned long tts_download;
+&nbsp;unsigned long tts_extract;
+&nbsp;unsigned long tts_decode;
+&nbsp;unsigned long tts_playback;
+};
+void captureAndAnalyze();
+bool speakWithSarvam(String text, const char* langCode, const char* voiceModel, TTSTiming &amp;timing);
+// --- DYNAMIC BUS SWITCHING (I2S ROUTINES) ---
+void initI2S(uint32_t sampleRate) {
+&nbsp;if (i2sInitialized) {
+&nbsp; &nbsp;i2s_driver_uninstall(I2S_NUM);
+&nbsp; &nbsp;i2sInitialized = false;
+&nbsp;}
+&nbsp;i2s_config_t i2s_config = {
+&nbsp; &nbsp;.mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
+&nbsp; &nbsp;.sample_rate = sampleRate,
+&nbsp; &nbsp;.bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
+&nbsp; &nbsp;.channel_format = I2S_CHANNEL_FMT_RIGHT_LEFT,
+&nbsp; &nbsp;.communication_format = I2S_COMM_FORMAT_STAND_I2S,
+&nbsp; &nbsp;.intr_alloc_flags = ESP_INTR_FLAG_LEVEL1,
+&nbsp; &nbsp;.dma_buf_count = 8,
+&nbsp; &nbsp;.dma_buf_len = 512,
+&nbsp; &nbsp;.use_apll = false,
+&nbsp; &nbsp;.tx_desc_auto_clear = true,
+&nbsp; &nbsp;.fixed_mclk = 0
+&nbsp;};
+&nbsp;i2s_pin_config_t pin_config = {
+&nbsp; &nbsp;.bck_io_num = I2S_BCLK,
+&nbsp; &nbsp;.ws_io_num = I2S_LRC,
+&nbsp; &nbsp;.data_out_num = I2S_DOUT,
+&nbsp; &nbsp;.data_in_num = I2S_PIN_NO_CHANGE
+&nbsp;};
+&nbsp;if (i2s_driver_install(I2S_NUM, &amp;i2s_config, 0, NULL) == ESP_OK) {
+&nbsp; &nbsp;i2s_set_pin(I2S_NUM, &amp;pin_config);
+&nbsp; &nbsp;i2s_zero_dma_buffer(I2S_NUM);
+&nbsp; &nbsp;i2sInitialized = true;
+&nbsp;}
+}
+void stopI2S() {
+&nbsp;if (i2sInitialized) {
+&nbsp; &nbsp;i2s_zero_dma_buffer(I2S_NUM);
+&nbsp; &nbsp;delay(50);
+&nbsp; &nbsp;i2s_driver_uninstall(I2S_NUM);
+&nbsp; &nbsp;i2sInitialized = false;
+&nbsp;}
+}
+bool initCameraHardware() {
+&nbsp;stopI2S(); // Always stop I2S before grabbing GPIO 12, 14, 15 for camera
+&nbsp;camera_config_t config;
+&nbsp;config.ledc_channel = LEDC_CHANNEL_0;
+&nbsp;config.ledc_timer &nbsp; = LEDC_TIMER_0;
+&nbsp;config.pin_d0 &nbsp; &nbsp; &nbsp; = Y2_GPIO_NUM;
+&nbsp;config.pin_d1 &nbsp; &nbsp; &nbsp; = Y3_GPIO_NUM;
+&nbsp;config.pin_d2 &nbsp; &nbsp; &nbsp; = Y4_GPIO_NUM;
+&nbsp;config.pin_d3 &nbsp; &nbsp; &nbsp; = Y5_GPIO_NUM;
+&nbsp;config.pin_d4 &nbsp; &nbsp; &nbsp; = Y6_GPIO_NUM;
+&nbsp;config.pin_d5 &nbsp; &nbsp; &nbsp; = Y7_GPIO_NUM;
+&nbsp;config.pin_d6 &nbsp; &nbsp; &nbsp; = Y8_GPIO_NUM;
+&nbsp;config.pin_d7 &nbsp; &nbsp; &nbsp; = Y9_GPIO_NUM;
+&nbsp;config.pin_xclk &nbsp; &nbsp; = XCLK_GPIO_NUM;
+&nbsp;config.pin_pclk &nbsp; &nbsp; = PCLK_GPIO_NUM;
+&nbsp;config.pin_vsync &nbsp; &nbsp;= VSYNC_GPIO_NUM;
+&nbsp;config.pin_href &nbsp; &nbsp; = HREF_GPIO_NUM;
+&nbsp;config.pin_sccb_sda = SIOD_GPIO_NUM;
+&nbsp;config.pin_sccb_scl = SIOC_GPIO_NUM;
+&nbsp;config.pin_pwdn &nbsp; &nbsp; = PWDN_GPIO_NUM;
+&nbsp;config.pin_reset &nbsp; &nbsp;= RESET_GPIO_NUM;
+&nbsp;config.xclk_freq_hz = 20000000;
+&nbsp;config.pixel_format = PIXFORMAT_JPEG;
+&nbsp;if (psramFound()) {
+&nbsp; &nbsp;config.frame_size &nbsp; = FRAMESIZE_QVGA;&nbsp;
+&nbsp; &nbsp;config.jpeg_quality = 12;
+&nbsp; &nbsp;config.fb_count &nbsp; &nbsp; = 1;
+&nbsp; &nbsp;config.fb_location &nbsp;= CAMERA_FB_IN_PSRAM;
+&nbsp;} else {
+&nbsp; &nbsp;config.frame_size &nbsp; = FRAMESIZE_QVGA;
+&nbsp; &nbsp;config.jpeg_quality = 15;
+&nbsp; &nbsp;config.fb_count &nbsp; &nbsp; = 1;
+&nbsp; &nbsp;config.fb_location &nbsp;= CAMERA_FB_IN_DRAM;
+&nbsp;}
+&nbsp;config.grab_mode = CAMERA_GRAB_LATEST;
+&nbsp;esp_err_t err = esp_camera_init(&amp;config);
+&nbsp;return (err == ESP_OK);
+}
+String extractBase64Audio(const String&amp; jsonResponse) {
+&nbsp;int keyIndex = jsonResponse.indexOf("\"audios\":[\"");
+&nbsp;if (keyIndex == -1) keyIndex = jsonResponse.indexOf("\"audios\": [\"");
+&nbsp;if (keyIndex != -1) {
+&nbsp; &nbsp;int start = jsonResponse.indexOf("\"", keyIndex + 10) + 1;
+&nbsp; &nbsp;int end &nbsp; = jsonResponse.indexOf("\"", start);
+&nbsp; &nbsp;if (start &gt; 0 &amp;&amp; end &gt; start) {
+&nbsp; &nbsp; &nbsp;return jsonResponse.substring(start, end);
+&nbsp; &nbsp;}
+&nbsp;}
+&nbsp;return "";
+}
+unsigned long playWAVBuffer(uint8_t* wavData, size_t wavLen) {
+&nbsp;unsigned long startAudioPlay = millis();
+&nbsp;if (!wavData || wavLen &lt;= 44) return 0;
+&nbsp;uint32_t sampleRate = 16000;&nbsp;
+&nbsp;uint16_t numChannels = 1; &nbsp; &nbsp;&nbsp;
+&nbsp;size_t headerOffset = 0;
+&nbsp;if (wavData[0] == 'R' &amp;&amp; wavData[1] == 'I' &amp;&amp; wavData[2] == 'F' &amp;&amp; wavData[3] == 'F') {
+&nbsp; &nbsp;headerOffset = 44;&nbsp;
+&nbsp; &nbsp;numChannels = wavData[22] | (wavData[23] &lt;&lt; 8);
+&nbsp; &nbsp;sampleRate = wavData[24] | (wavData[25] &lt;&lt; 8) | ((uint32_t)wavData[26] &lt;&lt; 16) | ((uint32_t)wavData[27] &lt;&lt; 24);
+&nbsp;}
+&nbsp;initI2S(sampleRate);
+&nbsp;size_t bytesWritten = 0;
+&nbsp;uint8_t* payload = wavData + headerOffset;
+&nbsp;size_t payloadLen = wavLen - headerOffset;
+&nbsp;if (numChannels == 1) {
+&nbsp; &nbsp;int16_t* monoSamples = (int16_t*)payload;
+&nbsp; &nbsp;size_t monoCount = payloadLen / 2;
+&nbsp; &nbsp;int16_t stereoChunk[512 * 2];
+&nbsp; &nbsp;for (size_t i = 0; i &lt; monoCount; i += 512) {
+&nbsp; &nbsp; &nbsp;size_t framesToProcess = (monoCount - i &lt; 512) ? (monoCount - i) : 512;
+&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp;for (size_t j = 0; j &lt; framesToProcess; j++) {
+&nbsp; &nbsp; &nbsp; &nbsp;int32_t boostedSample = (int32_t)(monoSamples[i + j] * AUDIO_GAIN_FACTOR);
+&nbsp; &nbsp; &nbsp; &nbsp;if (boostedSample &gt; 32767) &nbsp;boostedSample = 32767;
+&nbsp; &nbsp; &nbsp; &nbsp;if (boostedSample &lt; -32768) boostedSample = -32768;
+&nbsp; &nbsp; &nbsp; &nbsp;int16_t cleanSample = (int16_t)boostedSample;
+&nbsp; &nbsp; &nbsp; &nbsp;stereoChunk[j * 2] &nbsp; &nbsp; = cleanSample;
+&nbsp; &nbsp; &nbsp; &nbsp;stereoChunk[j * 2 + 1] = cleanSample;
+&nbsp; &nbsp; &nbsp;}
+&nbsp; &nbsp; &nbsp;i2s_write(I2S_NUM, stereoChunk, framesToProcess * 4, &amp;bytesWritten, portMAX_DELAY);
+&nbsp; &nbsp;}
+&nbsp;} else {
+&nbsp; &nbsp;int16_t* stereoSamples = (int16_t*)payload;
+&nbsp; &nbsp;size_t stereoCount = payloadLen / 2;
+&nbsp; &nbsp;int16_t chunk[512 * 2];
+&nbsp; &nbsp;for (size_t i = 0; i &lt; stereoCount; i += 1024) {
+&nbsp; &nbsp; &nbsp;size_t samplesToProcess = (stereoCount - i &lt; 1024) ? (stereoCount - i) : 1024;
+&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp;for (size_t j = 0; j &lt; samplesToProcess; j++) {
+&nbsp; &nbsp; &nbsp; &nbsp;int32_t boosted = (int32_t)(stereoSamples[i + j] * AUDIO_GAIN_FACTOR);
+&nbsp; &nbsp; &nbsp; &nbsp;if (boosted &gt; 32767) &nbsp;boosted = 32767;
+&nbsp; &nbsp; &nbsp; &nbsp;if (boosted &lt; -32768) boosted = -32768;
+&nbsp; &nbsp; &nbsp; &nbsp;chunk[j] = (int16_t)boosted;
+&nbsp; &nbsp; &nbsp;}
+&nbsp; &nbsp; &nbsp;i2s_write(I2S_NUM, chunk, samplesToProcess * 2, &amp;bytesWritten, portMAX_DELAY);
+&nbsp; &nbsp;}
+&nbsp;}
+&nbsp;int16_t silence[256] = {0};
+&nbsp;i2s_write(I2S_NUM, silence, sizeof(silence), &amp;bytesWritten, portMAX_DELAY);
+&nbsp;delay(50);
+&nbsp;stopI2S();
+&nbsp;return millis() - startAudioPlay;
+}
+bool speakWithSarvam(String text, const char* langCode, const char* voiceModel, TTSTiming &amp;timing) {
+&nbsp;if (WiFi.status() != WL_CONNECTED) return false;
+&nbsp;WiFiClientSecure client;
+&nbsp;client.setInsecure();
+&nbsp;HTTPClient http;
+&nbsp;String url = "<a href="https://api.sarvam.ai/text-to-speech">https://api.sarvam.ai/text-to-speech</a>";
+&nbsp;unsigned long t0 = millis();
+&nbsp;if (!http.begin(client, url)) return false;
+&nbsp;timing.tts_connect = millis() - t0;
+&nbsp;http.setTimeout(12000);
+&nbsp;http.addHeader("api-subscription-key", sarvamKey);
+&nbsp;http.addHeader("Content-Type", "application/json");
+&nbsp;String jsonBody = "{";
+&nbsp;jsonBody += "\"inputs\":[\"" + text + "\"],";
+&nbsp;jsonBody += "\"target_language_code\":\"" + String(langCode) + "\",";
+&nbsp;jsonBody += "\"speaker\":\"" + String(voiceModel) + "\",";
+&nbsp;jsonBody += "\"pace\":" + String(speechPace, 2) + ",";
+&nbsp;jsonBody += "\"speech_sample_rate\":16000,";
+&nbsp;jsonBody += "\"enable_preprocessing\":true,";
+&nbsp;jsonBody += "\"model\":\"bulbul:v3\"";
+&nbsp;jsonBody += "}";
+&nbsp;t0 = millis();
+&nbsp;int httpCode = http.POST(jsonBody);
+&nbsp;timing.tts_post = millis() - t0;
+&nbsp;if (httpCode == HTTP_CODE_OK) {
+&nbsp; &nbsp;t0 = millis();
+&nbsp; &nbsp;String payload = http.getString();
+&nbsp; &nbsp;http.end();
+&nbsp; &nbsp;timing.tts_download = millis() - t0;
+&nbsp; &nbsp;t0 = millis();
+&nbsp; &nbsp;String b64Audio = extractBase64Audio(payload);
+&nbsp; &nbsp;timing.tts_extract = millis() - t0;
+&nbsp; &nbsp;if (b64Audio.length() == 0) return false;
+&nbsp; &nbsp;size_t b64Len = b64Audio.length();
+&nbsp; &nbsp;size_t maxOutLen = (b64Len * 3 / 4) + 256;
+&nbsp; &nbsp;uint8_t* rawBuffer = (uint8_t*)heap_caps_malloc(maxOutLen, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+&nbsp; &nbsp;if (!rawBuffer) rawBuffer = (uint8_t*)malloc(maxOutLen);
+&nbsp; &nbsp;if (!rawBuffer) {
+&nbsp; &nbsp; &nbsp;Serial.println("[ERROR] Memory Allocation Failed!");
+&nbsp; &nbsp; &nbsp;return false;
+&nbsp; &nbsp;}
+&nbsp; &nbsp;t0 = millis();
+&nbsp; &nbsp;size_t outLen = 0;
+&nbsp; &nbsp;int ret = mbedtls_base64_decode(rawBuffer, maxOutLen, &amp;outLen,&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (const unsigned char*)b64Audio.c_str(), b64Len);
+&nbsp; &nbsp;timing.tts_decode = millis() - t0;
+&nbsp; &nbsp;if (ret == 0 &amp;&amp; outLen &gt; 0) {
+&nbsp; &nbsp; &nbsp;timing.tts_playback = playWAVBuffer(rawBuffer, outLen);
+&nbsp; &nbsp;}
+&nbsp; &nbsp;
+&nbsp; &nbsp;free(rawBuffer);
+&nbsp; &nbsp;return true;
+&nbsp;}
+&nbsp;http.end();
+&nbsp;return false;
+}
+void setup() {
+&nbsp;WRITE_PERI_REG(RTC_CNTL_BROWNOUT_REG, 0);
+&nbsp;Serial.begin(115200);
+&nbsp;pinMode(CAPTURE_BTN_PIN, INPUT_PULLUP);
+&nbsp;pinMode(LANG_BTN_PIN, INPUT_PULLUP);&nbsp;
+&nbsp;pinMode(FLASH_LED_PIN, OUTPUT);
+&nbsp;digitalWrite(FLASH_LED_PIN, LOW);
+&nbsp;Serial.println("\n========================================");
+&nbsp;Serial.println(" &nbsp;ESP32-CAM Multi-Language Vision TTS &nbsp;");
+&nbsp;Serial.println("========================================\n");
+&nbsp;WiFi.begin(ssid, password);
+&nbsp;WiFi.setSleep(false);
+&nbsp;Serial.print("[WIFI] Connecting");
+&nbsp;while (WiFi.status() != WL_CONNECTED) {
+&nbsp; &nbsp;delay(500);
+&nbsp; &nbsp;Serial.print(".");
+&nbsp;}
+&nbsp;Serial.println("\n[WIFI OK] Connected!");
+&nbsp;TTSTiming dummyTiming = {0};
+&nbsp;LanguageConfig current = languages[currentLangIndex];
+&nbsp;speakWithSarvam(current.wifiConnectedText, current.code, current.voice, dummyTiming);
+&nbsp;Serial.printf("\n&gt;&gt;&gt; System Ready! Current Language: %s &lt;&lt;&lt;\n", current.name);
+&nbsp;Serial.println("&gt;&gt;&gt; Capture Photo: GPIO 13 | Language Select: GPIO 2 &lt;&lt;&lt;");
+}
+void loop() {
+&nbsp;if (millis() - lastBtnPressTime &lt; 500) return;
+&nbsp;// Button 13: Capture Image &amp; Process
+&nbsp;if (digitalRead(CAPTURE_BTN_PIN) == LOW) {
+&nbsp; &nbsp;lastBtnPressTime = millis();
+&nbsp; &nbsp;captureAndAnalyze();
+&nbsp;}
+&nbsp;// Button 2: Toggle Language
+&nbsp;if (digitalRead(LANG_BTN_PIN) == LOW) {
+&nbsp; &nbsp;lastBtnPressTime = millis();
+&nbsp; &nbsp;
+&nbsp; &nbsp;currentLangIndex = (currentLangIndex + 1) % TOTAL_LANGUAGES;
+&nbsp; &nbsp;LanguageConfig current = languages[currentLangIndex];
+&nbsp; &nbsp;Serial.printf("\n[LANG] Switched to: %s\n", current.name);
+&nbsp; &nbsp;TTSTiming dummyTiming = {0};
+&nbsp; &nbsp;speakWithSarvam(current.notifyText, current.code, current.voice, dummyTiming);
+&nbsp;}
+}
+void captureAndAnalyze() {
+&nbsp;unsigned long t_total_start = millis();
+&nbsp;
+&nbsp;unsigned long t_cam_init = 0;
+&nbsp;unsigned long t_cam_snap = 0;
+&nbsp;unsigned long t_cam_deinit = 0;
+&nbsp;unsigned long t_ssl_connect = 0;
+&nbsp;unsigned long t_img_upload = 0;
+&nbsp;unsigned long t_vision_proc = 0;
+&nbsp;unsigned long t_json_parse = 0;
+&nbsp;TTSTiming tts = {0};
+&nbsp;LanguageConfig current = languages[currentLangIndex];
+&nbsp;Serial.println("\n==================================================");
+&nbsp;Serial.printf(" &nbsp; STARTING IMAGE ANALYSIS (%s Mode)\n", current.name);
+&nbsp;Serial.println("==================================================");
+&nbsp;// 1. Initialize Camera Hardware
+&nbsp;unsigned long t0 = millis();
+&nbsp;if (!initCameraHardware()) {
+&nbsp; &nbsp;Serial.println("[CAMERA ERROR] Failed hardware initialization!");
+&nbsp; &nbsp;return;
+&nbsp;}
+&nbsp;t_cam_init = millis() - t0;
+&nbsp;// 2. Snap Frame
+&nbsp;digitalWrite(FLASH_LED_PIN, HIGH);
+&nbsp;t0 = millis();
+&nbsp;camera_fb_t * fb = esp_camera_fb_get();
+&nbsp;digitalWrite(FLASH_LED_PIN, LOW);
+&nbsp;t_cam_snap = millis() - t0;
+&nbsp;if (!fb) {
+&nbsp; &nbsp;Serial.println("[CAMERA ERROR] Frame buffer capture failed!");
+&nbsp; &nbsp;esp_camera_deinit();
+&nbsp; &nbsp;return;
+&nbsp;}
+&nbsp;// 3. Immediately De-initialize Camera to free GPIO 12, 14, 15
+&nbsp;t0 = millis();
+&nbsp;esp_camera_deinit();&nbsp;
+&nbsp;t_cam_deinit = millis() - t0;
+&nbsp;// 4. Connect SSL Client
+&nbsp;t0 = millis();
+&nbsp;WiFiClientSecure client;
+&nbsp;client.setInsecure();
+&nbsp;client.setTimeout(10000);
+&nbsp;const char* host = "<a href="http://www.circuitdigest.cloud">www.circuitdigest.cloud</a>";
+&nbsp;if (!client.connect(host, 443)) {
+&nbsp; &nbsp;Serial.println("[CLOUD ERROR] Could not connect to Vision Cloud!");
+&nbsp; &nbsp;esp_camera_fb_return(fb);
+&nbsp; &nbsp;return;
+&nbsp;}
+&nbsp;t_ssl_connect = millis() - t0;
+&nbsp;// 5. Construct Multipart Upload Header
+&nbsp;String boundary = "----ESP32Boundary12345";
+&nbsp;String headPrompt = "--" + boundary + "\r\n" +
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"Content-Disposition: form-data; name=\"prompt\"\r\n\r\n" +
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;String(current.prompt) + "\r\n";
+&nbsp;String headImage = "--" + boundary + "\r\n" +
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Content-Disposition: form-data; name=\"imageFile\"; filename=\"photo.jpg\"\r\n" +
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Content-Type: image/jpeg\r\n\r\n";
+&nbsp;String tail = "\r\n--" + boundary + "--\r\n";
+&nbsp;size_t contentLength = headPrompt.length() + headImage.length() + fb-&gt;len + tail.length();
+&nbsp;// Stream POST Request Header &amp; Body Chunks
+&nbsp;t0 = millis();
+&nbsp;client.println("POST /api/v1/image-to-text/generate HTTP/1.1");
+&nbsp;client.println("Host: <a href="http://www.circuitdigest.cloud">www.circuitdigest.cloud</a>");
+&nbsp;client.println("X-API-Key: " + String(visionApiKey));
+&nbsp;client.println("Content-Type: multipart/form-data; boundary=" + boundary);
+&nbsp;client.printf("Content-Length: %d\r\n", contentLength);
+&nbsp;client.println("Connection: close");
+&nbsp;client.println();
+&nbsp;client.print(headPrompt);
+&nbsp;client.print(headImage);
+&nbsp;uint8_t *fbBuf = fb-&gt;buf;
+&nbsp;size_t fbLen = fb-&gt;len;
+&nbsp;size_t chunkSize = 1024;
+&nbsp;for (size_t i = 0; i &lt; fbLen; i += chunkSize) {
+&nbsp; &nbsp;size_t len = (fbLen - i &lt; chunkSize) ? (fbLen - i) : chunkSize;
+&nbsp; &nbsp;client.write(fbBuf + i, len);
+&nbsp;}
+&nbsp;client.print(tail);
+&nbsp;client.flush();
+&nbsp;t_img_upload = millis() - t0;
+&nbsp;
+&nbsp;esp_camera_fb_return(fb);
+&nbsp;// 6. Fast Response Parsing directly from Socket Stream (No 15-second hang!)
+&nbsp;t0 = millis();
+&nbsp;while (client.connected() &amp;&amp; !client.available()) {
+&nbsp; &nbsp;if (millis() - t0 &gt; 10000) {
+&nbsp; &nbsp; &nbsp;Serial.println("[CLOUD ERROR] Response Timeout!");
+&nbsp; &nbsp; &nbsp;client.stop();
+&nbsp; &nbsp; &nbsp;return;
+&nbsp; &nbsp;}
+&nbsp; &nbsp;delay(5);
+&nbsp;}
+&nbsp;// Skip HTTP Headers efficiently
+&nbsp;while (client.connected()) {
+&nbsp; &nbsp;String line = client.readStringUntil('\n');
+&nbsp; &nbsp;if (line == "\r" || line.length() == 0) break;
+&nbsp;}
+&nbsp;t_vision_proc = millis() - t0;
+&nbsp;// 7. Directly Deserialize JSON Stream
+&nbsp;t0 = millis();
+&nbsp;JsonDocument doc;
+&nbsp;DeserializationError error = deserializeJson(doc, client);
+&nbsp;client.stop();
+&nbsp;t_json_parse = millis() - t0;
+&nbsp;if (!error) {
+&nbsp; &nbsp;String generatedText = "";
+&nbsp; &nbsp;if (doc.containsKey("generated_text")) {
+&nbsp; &nbsp; &nbsp;generatedText = doc["generated_text"].as&lt;String&gt;();
+&nbsp; &nbsp;} else if (doc.containsKey("text")) {
+&nbsp; &nbsp; &nbsp;generatedText = doc["text"].as&lt;String&gt;();
+&nbsp; &nbsp;}
+&nbsp; &nbsp;generatedText.replace("\"", "");
+&nbsp; &nbsp;generatedText.replace("\'", "");
+&nbsp; &nbsp;generatedText.replace("\\", "");
+&nbsp; &nbsp;generatedText.replace("\r", "");
+&nbsp; &nbsp;generatedText.replace("\n", " ");
+&nbsp; &nbsp;generatedText.trim();
+&nbsp; &nbsp;if (generatedText.length() &gt; 0) {
+&nbsp; &nbsp; &nbsp;Serial.printf("\n[VISION RESULT (%s)] %s\n", current.name, generatedText.c_str());
+&nbsp; &nbsp; &nbsp;// 8. Execute Sarvam Text-to-Speech
+&nbsp; &nbsp; &nbsp;speakWithSarvam(generatedText, current.code, current.voice, tts);
+&nbsp; &nbsp; &nbsp;unsigned long t_total_elapsed = millis() - t_total_start;
+&nbsp; &nbsp; &nbsp;// Print Accurate Speed Benchmarks
+&nbsp; &nbsp; &nbsp;Serial.println("\n--------------------------------------------------");
+&nbsp; &nbsp; &nbsp;Serial.println(" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;REAL-TIME SPEED BENCHMARK &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ");
+&nbsp; &nbsp; &nbsp;Serial.println("--------------------------------------------------");
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;1. Camera Hardware Init : %lu ms\n", t_cam_init);
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;2. Image Snap Frame &nbsp; &nbsp; : %lu ms\n", t_cam_snap);
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;3. Camera Deinit &nbsp; &nbsp; &nbsp; &nbsp;: %lu ms\n", t_cam_deinit);
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;4. Vision SSL Connect &nbsp; : %lu ms\n", t_ssl_connect);
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;5. Image Upload Stream &nbsp;: %lu ms\n", t_img_upload);
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;6. Vision AI Response &nbsp; : %lu ms (FAST FIX!)\n", t_vision_proc);
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;7. Vision JSON Parse &nbsp; &nbsp;: %lu ms\n", t_json_parse);
+&nbsp; &nbsp; &nbsp;Serial.println("--------------------------------------------------");
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;8. Sarvam SSL Connect &nbsp; : %lu ms\n", tts.tts_connect);
+&nbsp; &nbsp; &nbsp;Serial.printf(" &nbsp;9. Sarvam POST Request &nbsp;: %lu ms\n", tts.tts_post);
+&nbsp; &nbsp; &nbsp;Serial.printf(" 10. Download Audio B64 &nbsp; : %lu ms\n", tts.tts_download);
+&nbsp; &nbsp; &nbsp;Serial.printf(" 11. Extract Base64 Str &nbsp; : %lu ms\n", tts.tts_extract);
+&nbsp; &nbsp; &nbsp;Serial.printf(" 12. Base64 Audio Decode &nbsp;: %lu ms\n", tts.tts_decode);
+&nbsp; &nbsp; &nbsp;Serial.printf(" 13. Speaker Audio Output : %lu ms\n", tts.tts_playback);
+&nbsp; &nbsp; &nbsp;Serial.println("--------------------------------------------------");
+&nbsp; &nbsp; &nbsp;Serial.printf(" TOTAL END-TO-END DELAY &nbsp; : %lu ms (%.2f sec)\n", t_total_elapsed, t_total_elapsed / 1000.0f);
+&nbsp; &nbsp; &nbsp;Serial.println("--------------------------------------------------\n");
+&nbsp; &nbsp;}
+&nbsp;} else {
+&nbsp; &nbsp;Serial.print("[JSON ERROR] Deserialization failed: ");
+&nbsp; &nbsp;Serial.println(error.c_str());
+&nbsp;}
+}
+</code></pre></div>
+</div>
+
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+(function() {
+ document.addEventListener('DOMContentLoaded', function() {
+   document.querySelectorAll('.code-block code').forEach(function(element) {
+     let content = element.innerHTML;
+     
+     // Remove only specific HTML tags
+     content = content.replace(/<\/?(?:p|br|div|span)\/?>/g, '');
+     
+     // Replace common HTML entities
+     content = content.replace(/&nbsp;/g, ' ');
+     content = content.replace(/&amp;/g, '&');
+     
+     // Clean up multiple newlines
+     content = content.replace(/\n\s*\n/g, '\n');
+     
+     element.innerHTML = content;
+   });
+
+   document.querySelectorAll('.copy-button').forEach(function(button) {
+     button.addEventListener('click', function() {
+       const pre = this.nextElementSibling;
+       const code = pre.querySelector('code');
+       const textContent = code.textContent || code.innerText;
+       
+       navigator.clipboard.writeText(textContent.trim()).then(function() {
+         button.textContent = 'Copied!';
+         button.classList.add('copied');
+         
+         setTimeout(function() {
+           button.textContent = 'Copy Code';
+           button.classList.remove('copied');
+         }, 2000);
+       }).catch(function(err) {
+         console.error('Failed to copy:', err);
+         button.textContent = 'Failed to copy';
+       });
+     });
+   });
+ });
+})();
+</script>
+  <div class="field field--name-field-video field--type-text-long field--label-above">
+    <div class="field--label">Video</div>
+              <div class="field--item"><p><iframe width="337" height="599" src="https://www.youtube.com/embed/ND-siq8LfGU" title="AI Wearable Pendant That Can SEE? ESP32-CAM Vision Assistant #diy #esp32cam #ai" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></p>
+</div>
+          </div>
+
+  <div class="field field--name-field-tags field--type-entity-reference field--label-above">
+    <div class="field--label">Tags</div>
+          <div class="field--items">
+              <div class="field--item"><a href="/tags/led" hreflang="en">LED</a></div>
+          <div class="field--item"><a href="/tags/diy" hreflang="en">DIY</a></div>
+          <div class="field--item"><a href="/tags/pinout" hreflang="en">pinout</a></div>
+          <div class="field--item"><a href="/tags/programming" hreflang="en">Programming</a></div>
+          <div class="field--item"><a href="/tags/ai" hreflang="en">AI</a></div>
+          <div class="field--item"><a href="/tags/iot-cloud" hreflang="en">IoT Cloud</a></div>
+          <div class="field--item"><a href="/tags/artificial-intelligence" hreflang="en">Artificial Intelligence</a></div>
+          <div class="field--item"><a href="/tags/text-to-speech" hreflang="en">Text to Speech</a></div>
+          <div class="field--item"><a href="/tags/vision-ai" hreflang="en">Vision AI</a></div>
+          <div class="field--item"><a href="/tags/voice-assistant" hreflang="en">Voice Assistant</a></div>
+          <div class="field--item"><a href="/tags/boost-converter" hreflang="en">boost converter</a></div>
+          <div class="field--item"><a href="/tags/amplifier" hreflang="en">Amplifier</a></div>
+          <div class="field--item"><a href="/tags/toggle-switch" hreflang="en">toggle switch</a></div>
+          <div class="field--item"><a href="/tags/google-tts" hreflang="en">Google TTS</a></div>
+          <div class="field--item"><a href="/tags/ttl" hreflang="en">TTL</a></div>
+          <div class="field--item"><a href="/tags/esp32-cam" hreflang="en">ESP32-CAM</a></div>
+          <div class="field--item"><a href="/tags/esp32" hreflang="en">ESP32</a></div>
+              </div>
+      </div>
+
+
+
+<div class="field field--name-field-tags field--type-entity-reference field--label-above " style="margin-bottom: 30px;margin-top: 30px;">
+  <div class="field--label">Have any question related to this Article?</div>
+  <div class="">
+    <div class="" style="display: inline-block;padding-right: 15px;">
+      <h4 class="head-article">Start a Discussion on:</h4>
+    </div>
+    <div class="field--item community-icon-p" style="">
+      <a href="https://chat.whatsapp.com/L79JMpehN63KCiBPNRwske" hreflang="en" target="_blank" rel="noopener" aria-label="Join our WhatsApp community for discussions">
+        <img class="community_icon" src="https://i.postimg.cc/R0zg5mSb/whatspp-logo.png" width="40px" alt="WhatsApp Community Icon" loading="lazy">
+        <div class="community-link">WhatsApp</div>
+      </a>
+    </div>
+    <div class="field--item community-icon-p">
+      <a href="https://t.me/circuitdigest" hreflang="en" target="_blank" rel="noopener" aria-label="Join our Telegram channel for discussions">
+        <img class="community_icon" src="https://i.postimg.cc/ZKFV6RrY/teleg-logo.png" width="40px" alt="Telegram Channel Icon" loading="lazy">
+        <div class="community-link">Telegram</div>
+      </a>
+    </div>
+    <div class="field--item community-icon-p">
+      <a href="https://discord.com/invite/UXJrFJSWpz" hreflang="en" target="_blank" rel="noopener" aria-label="Join our Discord server for discussions">
+        <img class="community_icon" src="https://i.postimg.cc/vH6VfSfQ/discord-logo.png" width="40px" alt="Discord Server Icon" loading="lazy">
+        <div class="community-link">Discord</div>
+      </a>
+    </div>
+    <div class="field--item community-icon-p">
+      <a href="https://circuitdigest.com/forums" hreflang="en" target="_blank" rel="noopener" aria-label="Visit our community forums for discussions">
+        <img class="community_icon" src="https://i.postimg.cc/4dTgGz1c/form-logo.png" width="40px" alt="Community Forum Icon" loading="lazy">
+        <div class="community-link">Forum</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<section class="mt-4 mb-4">
+    
+    
+          <div class="mt-4 pt-3 border-top">
+      <h3 class="h5 mb-3">Add New Comment</h3>
+      
+      <div class="mb-3">
+        <label class="form-label">Comment <span class="text-danger">*</span></label>
+        <textarea 
+          class="form-control" 
+          rows="5" 
+          placeholder="Share your thoughts about this article..."
+          style="resize: vertical;">
+        </textarea>
+      </div>
+      
+            <div class="comment-buttons">
+        <style>
+          .comment-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+          }
+          .comment-buttons .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            padding: 8px 16px;
+          }
+          .comment-buttons .btn svg {
+            margin-right: 8px;
+            vertical-align: middle;
+            flex-shrink: 0;
+          }
+          .comment-buttons .btn i {
+            margin-right: 8px;
+            flex-shrink: 0;
+          }
+          
+          @media (min-width: 576px) {
+            .comment-buttons {
+              flex-direction: row;
+              flex-wrap: wrap;
+            }
+            .comment-buttons .btn {
+              flex: 0 0 auto;
+              min-width: 0;
+            }
+          }
+        </style>
+        
+        <a href="/user/login?destination=/microcontroller-projects/esp32cam-ai-vision-assistant-pendant" 
+           target="_blank" 
+           rel="nofollow noopener"
+           class="btn btn-primary">
+          <i class="fa fa-sign-in"></i>Login to Comment
+        </a>
+        
+        <a href="https://circuitdigest.com/user/login/google" 
+           target="_blank" 
+           rel="nofollow noopener"
+           class="btn btn-danger">
+          <svg width="16" height="16" viewBox="0 0 24 24" style="fill: white;">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>Sign in with Google
+        </a>
+        
+        <a href="https://circuitdigest.com/user/login/facebook" 
+           target="_blank" 
+           rel="nofollow noopener"
+           class="btn btn-primary"
+           style="background-color: #1877f2; border-color: #1877f2;">
+          <svg width="16" height="16" viewBox="0 0 24 24" style="fill: white;">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>Log in with Facebook
+        </a>
+        
+        <a href="https://circuitdigest.com/user/login/github" 
+           target="_blank" 
+           rel="nofollow noopener"
+           class="btn"
+           style="background-color: #24292e; border-color: #24292e; color: white;">
+          <svg width="16" height="16" viewBox="0 0 16 16" style="fill: white;">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+          </svg>Sign in with GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+<ul class="links inline list-inline"><li class="comment-forbidden"><a href="/user/login?destination=/microcontroller-projects/esp32cam-ai-vision-assistant-pendant%23comment-form">Log in</a> or <a href="/user/register?destination=/microcontroller-projects/esp32cam-ai-vision-assistant-pendant%23comment-form">register</a> to post comments</li></ul>
+
+<style type="text/css">
+.community-link{
+  color: #828282;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.community_icon:hover{
+opacity: 0.7;
+}
+.community-link:hover{
+color:#0e3d79;
+}
+.community-icon-p{
+  padding: 5px 5px !important;
+  background: none !important;
+}
+.head-article{
+  font-size: 20px;color: #4d4d4d;margin-bottom: 20px;
+}
+@media only screen and (max-width: 361px) {
+  .community-link {
+    font-size: 10px;
+  }
+  .head-article{
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .community_icon{
+    width:30px;
+  }
+}
+</style>
+
+
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+var large = '<div class="field field--name-field-tags field--type-entity-reference field--label-above " style="margin-bottom: 30px;margin-top: 30px;"><div class="field--label">Have any question realated to this Article?</div><div class=""><div class="" style="display: inline-block;padding-right: 15px;"><h4 class="head-article">Ask Our Community Members</h4></div><div class="field--item community-icon-p" style=""><a href="https://chat.whatsapp.com/JR4e0Fc0V20H6jTMDd1daT" hreflang="en" target="_blank"><img class="community_icon" src="https://i.postimg.cc/R0zg5mSb/whatspp-logo.png" width="40px;"><div class="community-link">WhatsApp</div></a></div><div class="field--item community-icon-p"><a href="https://t.me/circuitdigest" hreflang="en" target="_blank"><img class="community_icon" src="https://i.postimg.cc/ZKFV6RrY/teleg-logo.png" width="40px;"><div class="community-link">Telegram</div></a></div><div class="field--item community-icon-p"><a href="https://discord.com/invite/UXJrFJSWpz" hreflang="en" target="_blank"><img class="community_icon" src="https://i.postimg.cc/vH6VfSfQ/discord-logo.png" width="40px;"><div class="community-link">Discord</div></a></div><div class="field--item community-icon-p"><a href="https://circuitdigest.com/forums" hreflang="en" target="_blank"><img class="community_icon" src="https://i.postimg.cc/4dTgGz1c/form-logo.png" width="40px;"><div class="community-link">Forum</div></a></div></div></div>';
+
+var elements = document.getElementsByClassName("field--name-body");
+
+insertAfter(large, elements);
+//elements.insertAdjacentHTML('afterend', large);
+
+//$('.field--name-body').append(large);​
+
+//$('.field--name-body').after(large);
+</script>
+
+
+
+  </div>
+
+</article>
+
+
+  </div>
+
+              </section>
+
+                              <aside class="col-sm-3" role="complementary">
+              <div class="region region-sidebar-second">
+    <section class="views-element-container block block-views block-views-blockti-videos-block-20 clearfix" id="block-views-block-ti-videos-block-20">
+  
+      <h2 class="block-title"></h2>
+    
+
+      <div class="form-group"><div class="post-style-list view view-ti-videos view-id-ti_videos view-display-id-block_20 js-view-dom-id-a7e1b044dd4eb8f05f940ae5ea1fd3d9d191aaf8a10896d78351dde84044e018">
+  
+    
+      <div class="view-header">
+      <!-- /21034905/track_imp_1x1 --><div id="div-gpt-ad-1572871798331-0" style="width: 1px; height: 1px;">
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1572871798331-0'); });
+  </script></div>
+<p><img width="100%" src="/sites/default/files/Digikey-featuredProducts.jpg" alt="DigiKey featured products logo"></p>
+
+    </div>
+      
+      <div class="view-content">
+        <div class="table-responsive">
+<table class="table table-hover table-striped">
+      <tbody>
+      <tr>
+                                                                      <td class="views-field views-field-field-image views-align-left"><a href="https://bit.ly/4AJ0aBg
+" rel="nofollow" target="_blank">  <img loading="lazy" src="/sites/default/files/styles/medium/public/TI_video/New%20Project%20-%202026-10-01T111114.449.jpg?itok=35a6WyEl" width="200" height="130" alt="NPS7601 Compact, Low-IQ Load Switch" title="NPS7601 Compact, Low-IQ Load Switch" class="img-responsive" />
+
+
+</a>        </td>
+                                                                                            <td class="views-field views-field-title views-align-left views-field-body"><a href="https://bit.ly/4AJ0aBg
+" rel="nofollow" target="_blank">NPS7601 Compact, Low-IQ Load Switch</a><br /><p>The Nexperia NPS7601 is a compact, single-channel, regulated forward-drop load switch</p>
+        </td>
+          </tr>
+      <tr>
+                                                                      <td class="views-field views-field-field-image views-align-left"><a href="https://bit.ly/4zbdVr6
+" rel="nofollow" target="_blank">  <img loading="lazy" src="/sites/default/files/styles/medium/public/TI_video/New%20Project%20-%202026-10-01T111412.195.jpg?itok=EfjVv3ha" width="200" height="200" alt="TFOS Series Automotive-Grade 260 W Resistor" title="TFOS Series Automotive-Grade 260 W Resistor" class="img-responsive" />
+
+
+</a>        </td>
+                                                                                            <td class="views-field views-field-title views-align-left views-field-body"><a href="https://bit.ly/4zbdVr6
+" rel="nofollow" target="_blank">TFOS Series Automotive-Grade 260 W Resistor</a><br /><p>Power up your design with Bourns® TFOS</p>
+        </td>
+          </tr>
+      <tr>
+                                                                      <td class="views-field views-field-field-image views-align-left"><a href="https://bit.ly/4ytlwBo
+" rel="nofollow" target="_blank">  <img loading="lazy" src="/sites/default/files/styles/medium/public/TI_video/New%20Project%20-%202026-10-01T111629.084.jpg?itok=6fwBB1fL" width="200" height="150" alt="NFC FPC Antennas" title="NFC FPC Antennas" class="img-responsive" />
+
+
+</a>        </td>
+                                                                                            <td class="views-field views-field-title views-align-left views-field-body"><a href="https://bit.ly/4ytlwBo
+" rel="nofollow" target="_blank">NFC FPC Antennas</a><br /><p>NFC FPC antennas offer a compact and versatile family of antennas for two-way read/write operations</p>
+        </td>
+          </tr>
+      <tr>
+                                                                      <td class="views-field views-field-field-image views-align-left"><a href="https://bit.ly/4j3AclX
+" rel="nofollow" target="_blank">  <img loading="lazy" src="/sites/default/files/styles/medium/public/TI_video/New%20Project%20-%202026-10-01T112322.250_0.jpg?itok=yvoQ6e5S" width="200" height="104" alt="NSP/RSP Series High-Efficiency Enclosed AC/DC Power Supplies" title="NSP/RSP Series High-Efficiency Enclosed AC/DC Power Supplies" class="img-responsive" />
+
+
+</a>        </td>
+                                                                                            <td class="views-field views-field-title views-align-left views-field-body"><a href="https://bit.ly/4j3AclX
+" rel="nofollow" target="_blank">NSP/RSP Series High-Efficiency Enclosed AC/DC Power Supplies</a><br /><p>NSP series power supplies deliver 75W–3200W high-efficiency power for industrial systems.</p>
+        </td>
+          </tr>
+      <tr>
+                                                                      <td class="views-field views-field-field-image views-align-left"><a href="https://bit.ly/3VcwPzc
+" rel="nofollow" target="_blank">  <img loading="lazy" src="/sites/default/files/styles/medium/public/TI_video/New%20Project%20-%202026-10-01T112943.606.jpg?itok=e5BUuJ2M" width="200" height="169" alt="PIC32CM GV Low-Power 32-bit Microcontrollers for Embedded Control" title="PIC32CM GV Low-Power 32-bit Microcontrollers for Embedded Control" class="img-responsive" />
+
+
+</a>        </td>
+                                                                                            <td class="views-field views-field-title views-align-left views-field-body"><a href="https://bit.ly/3VcwPzc
+" rel="nofollow" target="_blank">PIC32CM GV Low-Power 32-bit Microcontrollers for Embedded Control</a><br /><p>Boost performance and efficiency with PIC32CM GV 32-bit MCU—ideal for secure, low-power designs.</p>
+        </td>
+          </tr>
+      <tr>
+                                                                      <td class="views-field views-field-field-image views-align-left"><a href="https://bit.ly/4ys4Udl
+" rel="nofollow" target="_blank">  <img loading="lazy" src="/sites/default/files/styles/medium/public/TI_video/New%20Project%20-%202026-10-01T113628.003.jpg?itok=5c_h9TnJ" width="200" height="200" alt="Johanson Technology Multi-Layer High-Q SMD Capacitors " title="Johanson Technology Multi-Layer High-Q SMD Capacitors " class="img-responsive" />
+
+
+</a>        </td>
+                                                                                            <td class="views-field views-field-title views-align-left views-field-body"><a href="https://bit.ly/4ys4Udl
+" rel="nofollow" target="_blank">Johanson Technology Multi-Layer High-Q SMD Capacitors </a><br /><p>Watch a quick overview of High-Q capacitor key specs and benefits for RF and microwave designs</p>
+        </td>
+          </tr>
+      <tr>
+                                                                      <td class="views-field views-field-field-image views-align-left"><a href="https://bit.ly/4rDY6X8
+" rel="nofollow" target="_blank">  <img loading="lazy" src="/sites/default/files/styles/medium/public/TI_video/New%20Project%20-%202026-10-01T114027.049.jpg?itok=km5YoBpq" width="200" height="139" alt="HPF3K0 Series AC/DC Power Supplies" title="HPF3K0 Series AC/DC Power Supplies" class="img-responsive" />
+
+
+</a>        </td>
+                                                                                            <td class="views-field views-field-title views-align-left views-field-body"><a href="https://bit.ly/4rDY6X8
+" rel="nofollow" target="_blank">HPF3K0 Series AC/DC Power Supplies</a><br /><p>Digital 3kW AC-DC with 0-110% programmable 24V-60V outputs and ITE/medical safety approvals</p>
+        </td>
+          </tr>
+      <tr>
+                                                                      <td class="views-field views-field-field-image views-align-left"><a href="https://bit.ly/3Vr2P2w
+" rel="nofollow" target="_blank">  <img loading="lazy" src="/sites/default/files/styles/medium/public/TI_video/New%20Project%20-%202026-10-01T114346.356.jpg?itok=SyDMwHA8" width="200" height="131" alt="DuraClik 2.00 mm Wire-to-Board Connector System" title="DuraClik 2.00 mm Wire-to-Board Connector System" class="img-responsive" />
+
+
+</a>        </td>
+                                                                                            <td class="views-field views-field-title views-align-left views-field-body"><a href="https://bit.ly/3Vr2P2w
+" rel="nofollow" target="_blank">DuraClik 2.00 mm Wire-to-Board Connector System</a><br /><p>Providing compact, secure connections for high-vibration use, excelling in harsh conditions</p>
+        </td>
+          </tr>
+    </tbody>
+</table>
+  </div>
+
+    </div>
+  
+          </div>
+</div>
+
+  </section>
+
+<section id="block-block-content-75e03481-bb76-47f0-852d-a7c197b63bdd" class="block block-block-content block-block-content75e03481-bb76-47f0-852d-a7c197b63bdd clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><!-- /21034905/boombox2 --><p></p><center>
+<p></p></center>
+</div>
+      
+  </section>
+
+<section id="block-block-content-0f103afb-e8f0-401e-bfde-837555e5c4a1" class="block block-block-content block-block-content0f103afb-e8f0-401e-bfde-837555e5c4a1 clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p></p><center>
+<!-- /21034905/cd_half_page_ad --><div id="div-gpt-ad-1593583401069-0" style="width: 300px; height: 600px;">
+<script type="0226ff5781d26680fcbd8d9c-text/javascript">
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1593583401069-0'); });
+  </script></div>
+<p></p></center>
+</div>
+      
+  </section>
+
+
+  </div>
+
+          </aside>
+                  </div>
+  </div>
+<center>
+<div class="billboardbottom"><!-- /21034905/cd_digikey_billboard_bottom -->
+<div id="div-gpt-ad-1626868066018-0" style="min-width: 970px; min-height: 250px;"><script type="0226ff5781d26680fcbd8d9c-text/javascript">
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1626868066018-0'); });
+  </script></div>
+</div>
+</center>
+
+<div class="subscribe">
+	<div class="row m-0">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 text-center">
+			<div class="subscribe_inner">
+				<img src="/themes/circuitdigest/images/mail_img.png">
+				<h2><b>Join 100K+ Subscribers</b></h2>
+				<p>Your email is safe with us, we don’t spam.</p>
+				  <div class="region region-subscriber">
+    <section id="block-block-content-2c49af15-24dd-4f41-8676-7fef2ca8a967" class="block block-block-content block-block-content2c49af15-24dd-4f41-8676-7fef2ca8a967 clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><form accept-charset="utf-8" action="https://newsletter.semiconmedia.com/subscribe" class="subscribe_form" method="POST">
+<div class="input-group">
+<input class="form-control" id="emailForSave" name="email" placeholder="Type your email address" required type="email">
+<div style="display:none;"><label for="hp">HP</label>
+<input id="hp" name="hp" type="text"></div>
+<input name="list" type="hidden" value="Jp3RJbs8p6z892RyfZMsCbXg">
+<input name="subform" type="hidden" value="yes"> <span class="input-group-btn"><br>
+<input class="btn btn-primary" id="submitEmail" type="submit" value="Subscribe"></span></div>
+</form>
+</div>
+      
+  </section>
+
+
+  </div>
+
+				<p>Be a part of our ever growing community.</p>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
+
+
+    <footer class="footer " id="footer" role="contentinfo">
+	<div class="container-fluid">
+	    <footer class="footer-bs">
+	        <div class="row m-0">
+	        	<div class="col-md-4 footer-brand">
+                  <div class="region region-footer1">
+    <section id="block-footer1" class="block block-block-content block-block-content890e9101-21c5-4bbc-8fe7-d7647a10fa41 clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p><img src="/themes/circuitdigest/images/semicon_logo1.png" data-entity-uuid data-entity-type alt="semicon media logo" width="357" height="81" loading="lazy"></p>
+<p>Semicon Media is a unique collection of online media, focused purely on the Electronics Community across the globe. With a perfectly blended team of Engineers and Journalists, we demystify electronics and its related technologies by providing high value content to our readers.</p>
+<div class="footer-social-icons"><a href="https://www.facebook.com/circuitdigest/"><img src="/themes/circuitdigest/images/fb_icon.png" data-entity-uuid data-entity-type alt="facebook icon" width="32" height="32" loading="lazy"></a> <a href="https://twitter.com/CircuitDigest"><img src="/themes/circuitdigest/images/twitter_icon.png" data-entity-uuid data-entity-type alt="twitter icon" width="32" height="32" loading="lazy"></a> <a href="https://www.youtube.com/channel/UCy3CUAIYgZdAOG9k3IPdLmw"><img src="/themes/circuitdigest/images/youtube_icon.png" data-entity-uuid data-entity-type alt="youtube icon" width="32" height="32" loading="lazy"></a> <a href="https://www.linkedin.com/company/circuit-digest/"><img src="/themes/circuitdigest/images/linkedin_icon.png" data-entity-uuid data-entity-type alt="linkedin icon" width="32" height="32" loading="lazy"></a></div>
+</div>
+      
+  </section>
+
+
+  </div>
+
+	            </div>
+	        	<div class="col-md-8 footer-nav">
+	        		<div class="border_bottom">
+                  <div class="region region-footer2">
+    <section id="block-footer2" class="block block-block-content block-block-content6c310b38-6e4e-4294-abbf-5ec59d7caee3 clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><div class="row m-0">
+<div class="col-md-3">
+<h4><b>COMPANY</b></h4>
+</div>
+<div class="col-md-9"><a href="/privacy-policy">Privacy Policy</a> <a href="/cookie-policy">Cookie Policy</a> <a href="/terms-of-use">Terms of Use</a> <a href="/contact">Contact Us</a> <a href="/advertise">Advertise</a></div>
+</div>
+</div>
+      
+  </section>
+
+
+  </div>
+
+	        		</div>
+	        		<div class="border_bottom">
+	        			  <div class="region region-footer3">
+    <section id="block-footer3" class="block block-block-content block-block-content9bcccf15-648d-4abe-be10-e8df2dcdee54 clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><div class="row m-0">
+<div class="col-md-3">
+<h4><b>PROJECT</b></h4>
+</div>
+<div class="col-md-9"><a href="/555-timer-circuits">555 Timer Circuits</a> <a href="/op-amp-circuits">Op-amp Circuits</a> <a href="/audio-circuits">Audio Circuits</a> <a href="/smps-power-supply-circuits">Power Supply Circuits</a> <a href="/arduino-projects">Arduino Projects</a> <a href="/simple-raspberry-pi-projects-for-beginners">Raspberry Pi Projects</a> <a href="/msp430-projects">MSP430 Projects</a> <a href="/stm32-projects-and-tutorials">STM32 Projects</a> <a href="/esp8266-projects">ESP8266 Projects</a> <a href="/pic-microcontroller-projects">PIC Projects</a> <a href="/avr-microcontroller-projects">AVR Projects</a> <a href="/8051-microcontroller-projects">8051 Projects</a> <a href="/esp32-projects">ESP32 Projects</a> <a href="/internet-of-things-iot-projects">IoT Projects</a> <a href="/diy-pcb-projects">PCB Projects</a> <a href="/arduino-esp8266-projects">Arduino ESP8266 Projects</a> <a href="/microcontroller-projects">All Microcontroller Projects</a></div>
+</div>
+</div>
+      
+  </section>
+
+
+  </div>
+
+	        		</div>
+	        		<div class="border_bottom">
+	        			  <div class="region region-footer4">
+    <section id="block-footer4" class="block block-block-content block-block-contente971054d-fffa-472a-8cad-7e9fe4e720dd clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><div class="row m-0">
+<div class="col-md-3">
+<h4><strong>OUR NETWORK</strong></h4>
+</div>
+<div class="col-md-9 footer_logo_img">
+<div class="row m-0">
+<div class="col-md-4 col-sm-4"><a href="https://circuitdigest.com" data-entity-type data-entity-uuid><img src="/themes/circuitdigest/images/logo_circuitdigest.png" data-entity-uuid data-entity-type alt="CircuitDigest Logo" width="175" height="50" loading="lazy"></a></div>
+<div class="col-md-4 col-sm-4"><a href="https://components101.com" data-entity-type data-entity-uuid><img src="/themes/circuitdigest/images/logo_components.png" data-entity-uuid data-entity-type alt="Components101 Logo" width="265" height="50" loading="lazy"></a></div>
+<div class="col-md-4 col-sm-4"><a href="https://iotdesignpro.com" data-entity-type data-entity-uuid><img src="/themes/circuitdigest/images/logo_IOT.png" data-entity-uuid data-entity-type alt="IoTDesignPro Logo" width="173" height="50" loading="lazy"></a></div>
+</div>
+</div>
+</div>
+</div>
+      
+  </section>
+
+
+  </div>
+
+	        		</div>
+	            </div>
+	        </div>
+	    </footer>
+	</div>
+      <div class="region region-footer">
+    <section id="block-footercopyrights" class="block block-block-content block-block-content77d75c31-b273-4df5-9c74-09d34bcf1376 clearfix">
+  
+    
+
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><div class="bg_blue text-center footer-copyright">
+<p>Copyright © 2023&nbsp;<a href="/">Circuit Digest</a>. All rights reserved.</p>
+</div>
+</div>
+      
+  </section>
+
+
+  </div>
+
+</footer>
+  
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"node\/24534","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"floatingBlock":{"blocks":[{"selector":"#div-gpt-ad-1593583401069-0","container":".main-container"}],"min_width":700},"bootstrap":{"forms_has_error_value_toggle":1,"modal_animation":1,"modal_backdrop":"true","modal_focus_input":1,"modal_keyboard":1,"modal_select_text":1,"modal_show":1,"modal_size":"","popover_enabled":1,"popover_animation":1,"popover_auto_close":1,"popover_container":"body","popover_content":"","popover_delay":"0","popover_html":0,"popover_placement":"right","popover_selector":"","popover_title":"","popover_trigger":"click","tooltip_enabled":1,"tooltip_animation":1,"tooltip_container":"body","tooltip_delay":"0","tooltip_html":0,"tooltip_placement":"auto left","tooltip_selector":"","tooltip_trigger":"hover"},"TBMegaMenu":{"TBElementsCounter":{"column":13},"theme":"circuitdigest"},"ajaxTrustedUrl":{"\/search\/node":true},"user":{"uid":0,"permissionsHash":"42317eb5e9e49a272cf630b8b93549c1fc6101c8812ea23f1e140b9120f651db"}}</script>
+<script src="/sites/default/files/js/js_OSqmzRc41fO3_yMHsu0C5H1qGLRS2r0s_5oW2c9VnOE.js?scope=footer&amp;delta=0&amp;language=en&amp;theme=circuitdigest&amp;include=eJxlzTESwyAMRNELacKRGMCCaIK8GhD29VOkiJ2U_22xtSO57C3mjvIK9ZZUZJQlvknj6cGfrPxjNmQqnZwrhsYM-PSRLPwJfTeD4eBxEQe6i5HnqNyS8r4-b4-LUFnToVGxrc7hVm8eBE_G" type="0226ff5781d26680fcbd8d9c-text/javascript"></script>
+<script src="https://kit.fontawesome.com/641947e0fa.js" type="0226ff5781d26680fcbd8d9c-text/javascript"></script>
+<script src="/sites/default/files/js/js_MFdyjve5Yk8Lj6UvOGMWSeVV2ImoLEuZ8fSKZmzLD2c.js?scope=footer&amp;delta=2&amp;language=en&amp;theme=circuitdigest&amp;include=eJxlzTESwyAMRNELacKRGMCCaIK8GhD29VOkiJ2U_22xtSO57C3mjvIK9ZZUZJQlvknj6cGfrPxjNmQqnZwrhsYM-PSRLPwJfTeD4eBxEQe6i5HnqNyS8r4-b4-LUFnToVGxrc7hVm8eBE_G" type="0226ff5781d26680fcbd8d9c-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous" type="0226ff5781d26680fcbd8d9c-text/javascript"></script>
+<script src="/sites/default/files/js/js_YRVf9xBimPowTT4jntn68rGEW574Ox6BnbTslX7g_PM.js?scope=footer&amp;delta=4&amp;language=en&amp;theme=circuitdigest&amp;include=eJxlzTESwyAMRNELacKRGMCCaIK8GhD29VOkiJ2U_22xtSO57C3mjvIK9ZZUZJQlvknj6cGfrPxjNmQqnZwrhsYM-PSRLPwJfTeD4eBxEQe6i5HnqNyS8r4-b4-LUFnToVGxrc7hVm8eBE_G" type="0226ff5781d26680fcbd8d9c-text/javascript"></script>
+
+  <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="0226ff5781d26680fcbd8d9c-|49" defer></script></body>
+</html>
